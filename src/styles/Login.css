@@ -1,0 +1,16 @@
+.logout_button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 5px;
+}
+
+.Login {
+    text-align: center;
+    margin-top: 39vh;
+    font-size: 3em;
+}
+
+.title {
+    font-size: 1em;
+}

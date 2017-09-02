@@ -1,0 +1,60 @@
+.Portfolio {
+    background-color: #C6C6C6;
+    width: 100wh;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    font-size: 2em;
+    padding-top: 1%;
+}
+
+
+.name, .marketing, .login{
+    width: 33%;
+    height: 38%;
+    text-align: center;
+    text-shadow: 0 0 6px white;
+    /* border: 2px solid #000; */
+    position: absolute;
+    /* box-shadow: 4px 4px black */
+}
+.login:hover, .marketing:hover, .name:hover{
+    transform: scale(1.4);
+    transition: all 500ms ease-in;
+    z-index: 100;
+    box-shadow: 2px 2px 150px black;
+    border: 2px solid black;
+}
+
+.login {
+    top: 20vh;
+    left: 55vw;
+    transform: rotate(7deg);
+    background-image: url('../images/login.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.marketing {
+    top: 25vh;
+    left: 33vw;
+    transform: rotate(-3deg);
+    background-image: url('../images/marketing.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.name {
+    top: 35vh;
+    left: 15vw;
+    transform: rotate(-11deg);
+    background-image: url('../images/name.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.more {
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+}
