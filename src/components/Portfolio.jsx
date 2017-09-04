@@ -8,8 +8,8 @@ class Portfolio extends Component {
       <div className="Portfolio">
          Portfolio Page
          <div className="name">name</div>
-         <div className="marketing">marketing</div>
-         <Link to="/Login" className="link"><div className="login">Scheduler</div></Link>
+          <Link to="/marketing/home" className="link"><div className="marketing">marketing</div></Link>
+         <Link to="/Login" className="link"><div className="portfolio_login">Scheduler</div></Link>
          {/* <div className="more">MORE</div> */}
          
 

@@ -6,17 +6,18 @@ import Home from './components/Home.jsx'
 import Portfolio from './components/Portfolio.jsx'
 import Scheduler from './components/Scheduler.js'
 import Login from './components/Login.jsx'
-import './styles/index.css';
+import Marketing from './marketing/components/Router.js';
 
 ReactDOM.render(
 
 
             (<Router >
                 <Switch>
+                    <Route component={ Portfolio } path="/portfolio" />
+                    <Route component={ Marketing } path="/marketing/home" />
+                    <Route component={ Scheduler } path="/login/scheduler" />
+                    <Route component={ Login } path="/login" />
                     <Route component={ Home } path="/" exact />                
-                    <Route component={ Portfolio } path="/Portfolio" />
-                    <Route component={ Login } path="/Login" />
-                    <Route component={ Scheduler } path="/Login/Scheduler" />
                 </Switch>   
             </Router>)
 

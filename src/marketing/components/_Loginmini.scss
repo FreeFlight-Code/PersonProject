@@ -1,0 +1,21 @@
+.containermini {
+    width: 500px;
+    height: 500px;
+    background-color: #FFF;
+    z-index: 99;
+    position: absolute;
+    top: 80px;
+    right: 105px;
+    border-radius: 25px;
+    text-align: center;
+    display: none;
+   
+
+}
+
+.hidden {
+    display:none;
+ }
+ .show{
+    display:block;
+ }
