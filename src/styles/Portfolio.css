@@ -9,16 +9,16 @@
 }
 
 
-.name, .marketing, .portfolio_login{
+.lawlibrary, .marketing, .portfolio_login{
     width: 33%;
     height: 38%;
     text-align: center;
-    text-shadow: 0 0 8px #000;
-    /* border: 2px solid #000; */
+    text-shadow: 0 0 2px 2px#FFFFFF;
+    border: 2px solid #000;
     position: absolute;
-    /* box-shadow: 4px 4px black */
+    box-shadow: 4px 4px 12px black
 }
-.portfolio_login:hover, .marketing:hover, .name:hover{
+.portfolio_login:hover, .marketing:hover, .lawlibrary:hover{
     transform: scale(1.4);
     transition: all 500ms ease-in;
     z-index: 100;
@@ -44,7 +44,7 @@
     background-repeat: no-repeat;
     background-position: center;
 }
-.name {
+.lawlibrary {
     top: 35vh;
     left: 15vw;
     transform: rotate(-11deg);

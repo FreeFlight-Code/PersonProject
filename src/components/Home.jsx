@@ -9,9 +9,13 @@ class Home extends Component {
     return (
       <div className="Homepage">
         <img src={deflogo} className="def_logo" alt="logo" />
-        
-        <Link to="/Portfolio"><div className="portfolio_link">ENTER</div></Link>
+        <div className="menuholder">
+        <Link to="/Portfolio"><div className='home_menu portfolio_home'>Portfolio</div></Link>
+          <div className='home_menu social'>Social</div>
+          <div className='home_menu contact'>Contact</div>
+        </div>
       </div>
+
     );
   }
 }
