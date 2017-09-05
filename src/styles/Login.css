@@ -7,22 +7,31 @@
 
 .Login {
     text-align: center;
-    margin-top: 39vh;
-    font-size: 3em;
+    margin-top: 5vh;
+    font-size: 5em;
 }
-/* .login_button {
+.login_button {
    padding: 5px;
    border-width: 5px;  
    border-style: ridge;
    border-color: #C8C28D;
    border-radius: 8px;
    background-color: #C8C28D;
-} */
+   font-size: .5em;
+}
+.login_button:hover{
+    transform: scale(1.2);
+}
 
+
+.login_button:hover {
+   animation-name: zoom_out;
+   animation-duration: 1000ms;
+}
 .title {
     font-size: 1em;
 }
-.login_form{
+/* .login_form{
     height: 25vh;
     width: 80vw;
     border: 2px solid #747272;
@@ -31,19 +40,13 @@
     left: 10vw;
     background-color: #C3BFBF;
     display: inline;
-}
+} */
 
-/* .login_button:hover {
-    animation-name: zoom_out;
-    animation-duration: 1000ms;
-}
 
-@keyframes zoom_out {
+/* @keyframes zoom_out {
     0%   {  height: 5%;
             width: 12%;
-            position: absolute;
-            top: 50vh;
-            left: 46vw;
+            position: relative;
             background-color: #C3BFBF;
             display: none;}
     100% {
@@ -55,4 +58,4 @@
             left: 10vw;
             background-color: #C3BFBF;
             display: inline;}
-} */
+}  */

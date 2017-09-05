@@ -6,7 +6,7 @@ class Portfolio extends Component {
   render() {
     return (
       <div className="Portfolio">
-         Portfolio Page
+         Work Samples
          <Link to="/lawlibrary" className="link"><div className="lawlibrary">LAW LIBRARY</div></Link>
           <Link to="/marketing/home" className="link"><div className="marketing">MARKETING</div></Link>
           <Link to="/Login" className="link"><div className="portfolio_login">SCHEDULER</div></Link>

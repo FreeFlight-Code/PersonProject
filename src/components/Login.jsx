@@ -7,25 +7,26 @@ class Login extends Component {
     return (
       <div className="Login">
           <div className='title'>
-            Book 'em Scheduler
+            Your Custom Business Scheduler
           </div>  
             
-          {/* <a href={'http://localhost:3030/auth'}>
+           <a href={'http://localhost:3030/auth'}>
             <button className='login_button'>LOG IN</button>
-          </a> */}
-          {/* <Link to="/login/scheduler" className="link">
+          </a> 
+           {/* <Link to="/login/scheduler" className="link">
             <button className='login_button'>LOG IN</button>
-          </Link> */}
+          </Link>  */}
           <a href='http://localhost:3030/auth/logout'>
             <button className='logout_button'>log out</button>
           </a>
-          <div className='login_form'>
+          
+          {/* <div className='login_form'>
               Email:
               <input type="text" name="email" placeholder="your@email.here"/>
               Password:
-              <input type="text" name="lastname" placeholder="password"/>
+              <input type="text" name="password" placeholder="password"/>
               <Link to="/login/scheduler" className="link"><input type="submit" value="Submit"/></Link>
-          </div>
+          </div> */}
           {/* <h1 className="name">{profile}</h1> */}
       </div>
     );
