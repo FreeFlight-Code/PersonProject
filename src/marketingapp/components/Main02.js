@@ -10,7 +10,7 @@ class Main02 extends Component {
                 <div className="main02Container">
                     <img src={ hotdog } alt="hot dog" className="img-responsive"/>
                     <img src={ bananas } alt="2 people banana costume" className="img-responsive"/>
-                    <img src={ BAS } alt="girls selling phones" className="img-responsive"/>
+                    <img src={ BAS } alt="progressive girls" className="img-responsive"/>
                 </div>
             </div>
                 

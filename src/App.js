@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Home from './components/Home'
-import Portfolio from './components/Portfolio'
-import Scheduler from './components/Scheduler'
-
-import More from './components/More'
-import LawLibrary from './components/LawLibrary'
+import Home from './components/Home';
+import Portfolio from './components/Portfolio';
+import Scheduler from './components/Scheduler';
+import Login from './components/Login';
+import More from './components/More';
+import LawLibrary from './components/LawLibrary';
 import Marketing from './components/Marketing';
 import LatestNews from './marketingapp/components/LatestNews';
 import Testimonials from './marketingapp/components/Testimonials';
@@ -26,7 +26,7 @@ class App extends Component {
                     <Route component={ Testimonials } path="/marketing/testimonials" />
                     <Route component={ AboutUs } path="/marketing/aboutUs" /> 
                     <Route component={ Scheduler } path="/login/scheduler" />
-                    
+                    <Route component={ Login } path="/login" />
                     <Route component={ Home } path="/" exact />                
                 </Switch>            
       </div>
