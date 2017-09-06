@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from '../images/logo.png';
 import { Link } from 'react-router-dom';
 import Loginmini from './Loginmini';
-import '../main.css';
+// import '../marketing_main.css';
 
 
 class Header extends Component {
@@ -10,7 +10,7 @@ class Header extends Component {
         return (
             <div className='header'>
                 <div className="logoholder">
-                <Link to="#" className="link">
+                <Link to="/marketing/home" className="link">
                     <img src={logo} className="logo" alt="logo" />
                 </Link>
                 </div>
@@ -20,9 +20,9 @@ class Header extends Component {
                 
                 <div className="nav">
                     <ul>
-                        <Link to="#" className="link"><li className="latestNews">Latest News</li></Link>
-                        <Link to="#" className="link"><li className="testimonials">Testimonials</li></Link>
-                        <Link to="#" className="link"><li className="aboutUs">About Us</li></Link>
+                        <Link to="/marketing/testimonials" className="link"><li className="testimonials">Testimonials</li></Link>
+                        <Link to="/marketing/latestNews" className="link"><li className="latestNews">Latest News</li></Link>
+                        <Link to="/marketing/aboutUs" className="link"><li className="aboutUs">About Us</li></Link>
                     </ul>    
 
                 </div>

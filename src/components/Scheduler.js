@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import '../styles/Scheduler.css';
-// import {Link} from 'react-router-dom';
+import '../styles/_Scheduler.scss';
 
 class Scheduler extends Component {
   render() {

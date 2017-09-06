@@ -40,7 +40,7 @@ app.get('/auth', passport.authenticate('auth0'));
 //redirects
 app.get('/auth/callback', passport.authenticate('auth0', {
     successRedirect: 'http://localhost:3000/login/scheduler',
-    failureRedirect: 'http://localhost:3000/login'
+    failureRedirect: 'http://localhost:3000/'
     }))
 
 passport.serializeUser(function(user, done) {
