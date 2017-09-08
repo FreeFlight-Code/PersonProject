@@ -5,7 +5,7 @@ import Testimonials from '../marketingapp/components/Testimonials';
 import AboutUs from '../marketingapp/components/AboutUs';
 import Login from '../marketingapp/components/Login';
 import Home from '../marketingapp/components/Home';
-import '../marketingapp/marketing_main.css'
+import '../styles/_Marketing.scss'
 
 
 
@@ -13,7 +13,7 @@ class Marketing extends Component {
   render() {
     return (
       <div className="Marketing">
-          <Switch> 
+          <Switch>
             <Route component={ Home } path="/marketing/home"/>                
             <Route component={ LatestNews } path="/marketing/latestNews" />
             <Route component={ Testimonials } path="/marketing/testimonials" />

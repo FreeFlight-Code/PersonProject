@@ -1,24 +1,3 @@
-//import all .scss files
-@import url("https://fonts.googleapis.com/css?family=Baloo+Paaji|Cinzel+Decorative|Fredoka+One|Lemonada");
-
-
-// @import 'reset';
-// @import 'globals';
-
-// // ===== VARIABLES ===== //
-
-// @import 'variables';
-
-// // ===== FUNCTIONS ===== //
-
-// @import 'functions';
-
-// // ===== MIXINS ===== //
-
-// @import 'mixins';
-
-// ===== COMPONENTS ===== //
-
 @import'./_Home.scss';
 @import'./_LawLibrary.scss';
 @import'./_Login.scss';
@@ -27,4 +6,3 @@
 @import'./_Portfolio.scss';
 @import'./_Scheduler.scss';
 
-// @import './font-awesome-4.7.0/scss/font-awesome'
