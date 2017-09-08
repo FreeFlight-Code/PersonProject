@@ -5,7 +5,7 @@ export default class Form extends Component {
   render() {
     return (
       <div className="Form">
-            <div className="results">results</div>
+            <div className="results"></div>
           
             <form className='form_container' action="">
                 Search By:

@@ -6,8 +6,7 @@ class Scheduler extends Component {
   render() {
     return (
       <div className="Scheduler">
-          
-            Scheduler client or customer ID
+        
           < Form />
          
       </div>
