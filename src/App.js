@@ -7,9 +7,6 @@ import Login from './components/Login';
 import More from './components/More';
 import LawLibrary from './components/LawLibrary';
 import Marketing from './components/Marketing';
-import LatestNews from './marketingapp/components/LatestNews';
-import Testimonials from './marketingapp/components/Testimonials';
-import AboutUs from './marketingapp/components/AboutUs';
 import './styles/App.css';
 
 
@@ -21,11 +18,8 @@ class App extends Component {
                     <Route component={ Portfolio } path="/portfolio" />
                     <Route component={ More } path="/more" />
                     <Route component={ LawLibrary } path="/lawlibrary" />
-                    <Route component={ Marketing } path="/marketing/home" />              
-                    <Route component={ LatestNews } path="/marketing/latestNews" /> 
-                    <Route component={ Testimonials } path="/marketing/testimonials" />
-                    <Route component={ AboutUs } path="/marketing/aboutUs" /> 
                     <Route component={ Scheduler } path="/login/scheduler" />
+                    <Route component={ Marketing } path="/marketing/home" />
                     <Route component={ Login } path="/login" />
                     <Route component={ Home } path="/" exact />                
                 </Switch>            

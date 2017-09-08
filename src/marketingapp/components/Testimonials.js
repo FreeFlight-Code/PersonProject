@@ -7,10 +7,10 @@ import Footer from './Footer';
 class Testimonials extends Component {
   render() {
     return (
-      <div className="Testimonials">
+      <div className="Testimonials">Testimonials
             
             <Header />
-            <div className='image'></div>
+            {/* <div className='image'></div> */}
             
             <Footer />
           
