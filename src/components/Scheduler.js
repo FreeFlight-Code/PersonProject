@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/_Scheduler.scss';
+import Form from './Form';
 
 class Scheduler extends Component {
   render() {
@@ -7,7 +8,7 @@ class Scheduler extends Component {
       <div className="Scheduler">
           
             Scheduler client or customer ID
-          
+          < Form />
          
       </div>
     );

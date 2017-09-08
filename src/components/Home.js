@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-// import {profile} from './server/server.js';
 import deflogo  from '../images/def_logo.png';
 import '../styles/_Home.scss';
 

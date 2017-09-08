@@ -1,0 +1,31 @@
+
+
+.results {
+    
+    height: 200px;
+    background-color: #C0BABA;
+    border: 2px solid black;
+    margin-top: 20px;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+        
+}
+
+.form_container {
+  
+    height: 200px;
+    background-color: #454141;
+    display: flex;
+    justify-content: center;
+    border: 2px solid black;
+    
+}
+input {
+    border: 2px solid black;
+    margin: 5px;
+    height: 20px;
+}
+.searchButton {
+    width: 100px;
+    height: 25px;
+}
