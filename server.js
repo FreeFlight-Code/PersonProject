@@ -3,18 +3,41 @@
 require('dotenv').config();
 
 const express = require('express'),
-    bodyParser = require('body-parser'),
-    cors = require('cors'),
-    passport = require('passport'),
-    Auth0Strategy = require('passport-auth0'),
-    session = require('express-session');
+      bodyParser = require('body-parser'),
+      cors = require('cors'),
+      passport = require('passport'),
+      Auth0Strategy = require('passport-auth0'),
+      session = require('express-session');
 const massive = require('massive');
-const api = require('./server/api.js')
+const api = require('./server/api.js');
 
 const app = express();
 
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~    MIDDLEWARE     ~~~~~~~~~~~~~~~~~~`
 app.use(cors());
 app.use(bodyParser.json());
+
+
+//~~~~~~~~~~~~~    Controllers     ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+// const Businesses = require('./server/Businesses');
+
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ENDPOINTS  SAMPLES
+
+app.post('/blog/add', blogCtrl.addBlog);  backend url, variable from controller, defined in blogctrl.js
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+app.get('/api/businesses', api.getBusinesses)
+app.get('/api/business/:id', api.getSingleBusiness)
+app.post('/api/business', api.createBusiness)
+app.put('/api/businesses/:id', api.updateBusiness)
+app.delete('/api/business/:id', api.destroyBusiness)
+
+///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Massive~~~~~~~~~`
+
 
 massive({
     host: 'ec2-23-21-197-231.compute-1.amazonaws.com',
@@ -26,10 +49,12 @@ massive({
   }).then(function(db) {
     app.set('db', db);
   });
+
+
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 AUTH0 LOGIN
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-
+//                        middleware
 app.use(session({
     secret: 'password',
     resave: false,
@@ -51,7 +76,7 @@ passport.use(new Auth0Strategy({
    done(null, profile);
 
 }));
-
+//     ~~~~~~~~~~~~~~~~~      AUTH endpoints
 //kicks off process
 app.get('/auth', passport.authenticate('auth0'));
 
@@ -65,6 +90,11 @@ passport.serializeUser(function(user, done) {
     done(null, user);
 });
 
+
+// passport.deserializeUser(function(id, done) {
+//     User.findById(id, function (err, user) {
+//       done(err, user);
+//     });
 passport.deserializeUser(function(obj, done) {
     done(null, obj)
 });
@@ -82,10 +112,7 @@ app.get('/auth/me', (req, res, next) => {
     req.logOut();
     return res.redirect(302, 'http://localhost:3000/');
   })
-/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-API Endpoints
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-api(app);
+
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 LISTEN
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
