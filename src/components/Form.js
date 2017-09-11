@@ -15,7 +15,7 @@ export default class Form extends Component {
       list: [],
       // login_profile: profile
     };
-    this.handlesearch = this.handleSearch.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
     // const url = 'http://localhost:3030/';
 
   }
@@ -28,10 +28,10 @@ export default class Form extends Component {
     // axios.get('http://localhost:3030/api/jobs' + (params?params:'')).then((res) => {
       
 
-  handleSearch() {
-   
+  handleSearch(event) {
+    event.preventDefault()
     axios.get(`http://localhost:3030/api/jobs`).then((res) => {
-
+      console.log(res)
       
 
       this.setState({
@@ -40,6 +40,52 @@ export default class Form extends Component {
     })
   }
 
+  // return axios.get(`http://localhost:3030/api/jobs`).then((res) => {
+    
+  //    console.log(res);
+  //    // console.log(name);
+  //    // if (this.state.name) {
+  //    //   sortedData = sortedData.filter((e) => {
+  //    //     let index = (e.jobname).toLowerCase();
+  //    //     console.log(index)
+  //    //     return index.includes(name);
+  //    //   })
+  //    }
+  //    // if (this.state.date) {
+  //    //   sortedData = sortedData.filter((e) => {
+  //    //     let index = (e.date);
+  //    //     // console.log(index)
+  //    //     return index.includes(date);
+  //    //   })
+  //    // }
+  //    // if (this.state.state) {
+  //    //   sortedData = sortedData.filter((e) => {
+  //    //     let index = (e.state).toLowerCase();
+  //    //     // console.log(index)
+  //    //     return index.includes(state);
+  //    //   })
+  //    // }
+  //    // if (this.state.city) {
+  //    //   sortedData = sortedData.filter((e) => {
+  //    //     let index = (e.city).toLowerCase();
+  //    //     // console.log(index)
+  //    //     return index.includes(city);
+  //    //   })
+  //    // }
+  //    // if (this.state.comments) {
+  //    //   sortedData = sortedData.filter((e) => {
+  //    //     let index = (e.comments).toLowerCase();
+  //    //     // console.log(index)
+  //    //     return index.includes(comments);
+  //    //   })
+  //    // }
+
+  //  //   this.setState({
+  //  //     list: sortedData
+  //  //   })
+  //  ).catch(error => {
+  //    console.log(error)
+  //  }) 
 
 
   handleChange(e) {
