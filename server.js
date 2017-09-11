@@ -32,19 +32,31 @@ app.post('/blog/add', blogCtrl.addBlog);  backend url, variable from controller,
 
 app.get('/api/businesses', api.getBusinesses)
 app.get('/api/business/:id', api.getSingleBusiness)
-app.post('/api/business', api.createBusiness)
-app.put('/api/businesses/:id', api.updateBusiness)
-app.delete('/api/business/:id', api.destroyBusiness)
+// app.post('/api/business', api.createBusiness)
+// app.put('/api/businesses/:id', api.updateBusiness)
+// app.delete('/api/business/:id', api.destroyBusiness)
+
+app.get('/api/jobs', api.getJobs)
+// app.get('/api/job/:id', api.getSingleJob)
+// app.post('/api/job', api.createJob)
+// app.put('/api/jobs/:id', api.updateJob)
+// app.delete('/api/job/:id', api.destroyJob)
+
+// app.get('/api/customers', api.getCustomers)
+// app.get('/api/customer/:id', api.getSingleCustomer)
+// app.post('/api/customer', api.createCustomer)
+// app.put('/api/customers/:id', api.updateCustomer)
+// app.delete('/api/customer/:id', api.destroyCustomer)
 
 ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Massive~~~~~~~~~`
 
 
 massive({
-    host: 'ec2-23-21-197-231.compute-1.amazonaws.com',
-    port: 5432,
-    database: 'd7lju78q4gns61',
-    user: 'ezqmntzzrfjxch',
-    password: 'e5e4ca3fd78704cbf90e9e747c880f27cc7cfad9625864a6e40be0f9275c3759',
+    host: process.env.MASSIVE_HOST,
+    port: process.env.MASSIVE_PORT,
+    database: process.env.MASSIVE_DATABASE,
+    user: process.env.MASSIVE_USER,
+    password: process.env.MASSIVE_PASSWORD,
     ssl: true
   }).then(function(db) {
     app.set('db', db);
@@ -71,7 +83,7 @@ passport.use(new Auth0Strategy({
     callbackURL: process.env.AUTH_CALLBACK
   }, function(accessToken, refreshToken, extraParams, profile, done) {
 
-   console.log(profile);
+  //  console.log(profile);
 
    done(null, profile);
 

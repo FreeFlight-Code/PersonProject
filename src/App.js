@@ -21,7 +21,7 @@ class App extends Component {
                     <Route component={ Portfolio } path="/portfolio" />
                     <Route component={ More } path="/more" />
                     <Route component={ LawLibrary } path="/lawlibrary" />
-                    <Route component={ Marketing } path="/marketing/home" />              
+                    <Route component={ Marketing } path="/marketing/home" />     
                     <Route component={ LatestNews } path="/marketing/latestNews" /> 
                     <Route component={ Testimonials } path="/marketing/testimonials" />
                     <Route component={ AboutUs } path="/marketing/aboutUs" /> 

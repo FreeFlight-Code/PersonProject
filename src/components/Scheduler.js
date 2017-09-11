@@ -6,7 +6,6 @@ class Scheduler extends Component {
   render() {
     return (
       <div className="Scheduler">
-        
           < Form />
          
       </div>
