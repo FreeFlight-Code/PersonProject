@@ -16,21 +16,14 @@ export default class Form extends Component {
       // login_profile: profile
     };
     this.handleSearch = this.handleSearch.bind(this);
-    // const url = 'http://localhost:3030/';
+
 
   }
-  // handleSearch() {
-  // console.log('starting handlesearch')
-  // var params = undefined;
-  // if (this.state.name) {
-  //   params="?name=" + this.state.name.toString();
-  // }
-  // axios.get('http://localhost:3030/api/jobs' + (params?params:'')).then((res) => {
 
 
   handleSearch(event) {
     event.preventDefault()
-    axios.get(`http://localhost:3030/api/jobs`).then((res) => {
+    axios.get(`/api/jobs`).then((res) => {
       // console.log(res.data)
       let name = (this.state.name).toLowerCase();
       let state = (this.state.state).toLowerCase();
@@ -82,33 +75,45 @@ export default class Form extends Component {
 
     return (
       <div className="Form">
-        <div className="results">
-          <ul className='list_container'>
-            {this.state.list.map((element, i) => {
-              return (
-                <li key={element.id}>
-                  {element.id}
-                  {element.jobname}
-                  {element.jobdate}
-                  {element.city}
-                  {element.state}
-                </li>
-              );
-            })}
-          </ul>
-        </div>
 
-        <form className='form_container' action="">
+
+        <form className='form_container'>
           Search By:
+
           <input onChange={(e) => this.setState({ 'name': e.target.value })} type="text" placeholder='Job name' value={this.state.name}></input>
-          <input onChange={(e) => this.setState({ 'date': e.target.value })} type="text" placeholder='Date of job' ></input>
+
           <input onChange={(e) => this.setState({ 'state': e.target.value })}
             type="text" placeholder='State' value={this.state.state}></input>
-          <input onChange={(e) => this.setState({ 'city': e.target.value })} type="text" placeholder='City' value={this.state.city}></input>
-          <input onChange={(e) => this.setState({ 'comments': e.target.value })} type="text" placeholder='comments' value={this.state.comments}></input>
 
-          <button onClick={this.handleSearch} className="searchButton">Search</button>
+          <input onChange={(e) => this.setState({ 'city': e.target.value })} type="text" placeholder='City' value={this.state.city}></input>
+
+          <button onClick={this.handleSearch} className="searchButton">Get Jobs</button>
+
+
         </form>
+        <div className="results">Results
+          <div className="titleHolder">
+              <div className="title">ID</div>
+              <div className="title">Job Name</div>
+              <div className="title">Job Date</div>
+              <div className="title">Job City</div>
+              <div className="title">Job State</div>
+          </div>
+          <div className='list_container'>
+            {this.state.list.map((element, i) => {
+              return (
+                <div className='element_list' key={element.id}>
+                  <div>{element.id}</div>
+                  <div>{element.jobname}</div>
+                  <div>{(element.jobdate)}</div>
+                  <div>{element.city}</div>
+                  <div>{element.state}</div>
+                </div>
+
+              );
+            })}
+          </div>
+        </div>
 
       </div>
     );
