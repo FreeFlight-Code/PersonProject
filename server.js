@@ -9,7 +9,7 @@ const express = require('express'),
       Auth0Strategy = require('passport-auth0'),
       session = require('express-session');
 const massive = require('massive');
-const api = require('./server/api.js');
+
 
 const app = express();
 
@@ -22,22 +22,21 @@ app.use(bodyParser.json());
 //~~~~~~~~~~~~~    Controllers     ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 // const Businesses = require('./server/Businesses');
-
+const api = require('./server/api.js');
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ENDPOINTS  SAMPLES
 
-app.post('/blog/add', blogCtrl.addBlog);  backend url, variable from controller, defined in blogctrl.js
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-app.get('/api/businesses', api.getBusinesses)
-app.get('/api/business/:id', api.getSingleBusiness)
+app.get('/api/businesses', api.getBusinesses);
+// app.get('/api/business/:id', api.getSingleBusiness)
 // app.post('/api/business', api.createBusiness)
 // app.put('/api/businesses/:id', api.updateBusiness)
 // app.delete('/api/business/:id', api.destroyBusiness)
 
-app.get('/api/jobs', api.getJobs)
-app.get('/api/job/:id', api.getSingleJob)
+app.get('/api/jobs', api.getJobs);
+// app.get('/api/job/:id', api.getSingleJob)
 // app.post('/api/job', api.createJob)
 // app.put('/api/jobs/:id', api.updateJob)
 // app.delete('/api/job/:id', api.destroyJob)
@@ -88,7 +87,11 @@ passport.use(new Auth0Strategy({
    done(null, profile);
 
 }));
-//     ~~~~~~~~~~~~~~~~~      AUTH endpoints
+
+
+
+
+//     ~~~~~~~~~~ MY  AUTH endpoints    ~~~~~~~~
 //kicks off process
 app.get('/auth', passport.authenticate('auth0'));
 app.post('/custom_auth', api.login);
@@ -116,6 +119,7 @@ passport.deserializeUser(function(obj, done) {
 
 //to help stay logged in between pages or routes
 app.get('/auth/me', (req, res, next) => {
+    console.log(req.user)
     if (!req.user) {
       return res.status(404).send('User not found');
     } else {

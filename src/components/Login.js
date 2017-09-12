@@ -13,8 +13,8 @@ class Login extends Component {
   }
 
 handlelogin() {
-  console.log(this.state.email);
-  console.log(this.state.password);
+  // console.log(this.state.email);
+  // console.log(this.state.password);
   if (!this.state.email || !this.state.password ) alert('Must enter a email and password!!!')
   if (this.state.email && this.state.password )
   {axios.post(`http://localhost:3030/custom_auth`, {
