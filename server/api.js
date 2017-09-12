@@ -64,16 +64,24 @@ module.exports = {
   // },
   
   getJobs: function (req, res) {
-    console.log(req.params);
     let db= req.app.get('db')
-    // console.log('processing get jobs');
     db.getJobs().then((results) => {
-      // console.log(results);
       res.status(200).send(results);
     }).catch((error)=>{
         console.log(error);
-        // res.status(400).send(error);        
+        res.status(400).send(error);        
     })
+  },
+  getSingleJob: function (req, res) {
+    let db= req.app.get('db')
+    const value = req.params.id;
+    db.getSingleJob([value]).then((results) => {
+      console.log(results);
+      res.status(200).send(results);
+    }).catch((error)=>{
+      console.log(error);
+      res.status(400).send(error);        
+  })
   },
  
 

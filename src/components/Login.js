@@ -1,7 +1,24 @@
 import React, { Component } from 'react';
 import '../styles/_Login.scss';
+import {axios} from 'axios';
 
 class Login extends Component {
+  constructor(props){
+    super(props)
+    this.state = ({
+      username: "",
+      password: ""
+    })
+    this.handlelogin = this.handlelogin.bind(this);
+  }
+
+handlelogin() {
+  axios.post(`/custom_auth`, {
+    username: this.state.username,
+    password: this.state.username
+  })
+}
+
   render() {
     return (
       <div className="Login">
@@ -10,8 +27,22 @@ class Login extends Component {
           </div>  
             
            <a href={'http://localhost:3030/auth'}>
-            <button className='login_button'>LOG IN</button>
+            <button className='login_button'>LOG IN with Google</button>
           </a> 
+          <input placeholder='username' type="text" onChange={(event) => {
+            this.setState({
+              username: event.target.value
+            })
+          }} className="username" value={this.state.username}/>
+          {/*~~~~~~~~~~~~~~~  buttons separator    ~~~~~~~~~~~~~~~~~~*/}
+          <input placeholder='password' type="text" onChange={(event) => {
+            this.setState({
+              password: event.target.value
+            })
+          }} className="password" value={this.state.password}/>
+          
+            <button onClick={this.handlelogin} className='login_button'>LOG IN CUSTOM</button>
+           
            {/* <Link to="/login/scheduler" className="link">
             <button className='login_button'>LOG IN</button>
           </Link>  */}

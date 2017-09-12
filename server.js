@@ -37,7 +37,7 @@ app.get('/api/business/:id', api.getSingleBusiness)
 // app.delete('/api/business/:id', api.destroyBusiness)
 
 app.get('/api/jobs', api.getJobs)
-// app.get('/api/job/:id', api.getSingleJob)
+app.get('/api/job/:id', api.getSingleJob)
 // app.post('/api/job', api.createJob)
 // app.put('/api/jobs/:id', api.updateJob)
 // app.delete('/api/job/:id', api.destroyJob)
@@ -91,6 +91,11 @@ passport.use(new Auth0Strategy({
 //     ~~~~~~~~~~~~~~~~~      AUTH endpoints
 //kicks off process
 app.get('/auth', passport.authenticate('auth0'));
+app.get('/custom_auth', (req, res, next) => {
+    console.log(req.params)
+    
+})
+
 
 //redirects
 app.get('/auth/callback', passport.authenticate('auth0', {

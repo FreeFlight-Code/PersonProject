@@ -6,6 +6,9 @@ class Scheduler extends Component {
   render() {
     return (
       <div className="Scheduler">
+        <a href='/auth/logout'>
+            <button className='logout_button'>log out</button>
+          </a>
           < Form />
          
       </div>

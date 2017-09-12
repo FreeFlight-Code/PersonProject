@@ -7,15 +7,18 @@ export default class Form extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: "",
       name: "",
       date: "",
       state: "",
       city: "",
       comments: '',
       list: [],
+      details: []
       // login_profile: profile
     };
     this.handleSearch = this.handleSearch.bind(this);
+    this.handleDetails = this.handleDetails.bind(this);
 
 
   }
@@ -67,8 +70,25 @@ export default class Form extends Component {
     })
   }
 
-  handleChange(e) {
+  handleDetails(event) {
+    event.preventDefault()
+    axios.get(`/api/jobs`).then((res) => {
+      let id = this.state.id;
+      let sortedData = res.data;
+      //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~    id sort
+      if (this.state.id) {
+        sortedData = sortedData.filter((e) => {
+          let index = (e.id);
+          console.log(index)
+          return index.includes(id);
+        })
+      }
+      this.setState({
+        details: sortedData
+      })
 
+
+    })
   }
 
   render() {
@@ -89,6 +109,9 @@ export default class Form extends Component {
 
           <button onClick={this.handleSearch} className="searchButton">Get Jobs</button>
 
+          <button onClick={this.handleDetails} className="searchButton">Get Details</button>
+
+          <input onChange={(e) => this.setState({ 'id': e.target.value })} type="text" placeholder='Job ID' value={this.state.id}></input>
 
         </form>
         <div className="results">Results
