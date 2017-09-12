@@ -1,22 +1,28 @@
 import React, { Component } from 'react';
 import '../styles/_Login.scss';
-import {axios} from 'axios';
+import axios from 'axios';
 
 class Login extends Component {
   constructor(props){
     super(props)
     this.state = ({
-      username: "",
+      email: "",
       password: ""
     })
     this.handlelogin = this.handlelogin.bind(this);
   }
 
 handlelogin() {
-  axios.post(`/custom_auth`, {
-    username: this.state.username,
-    password: this.state.username
-  })
+  console.log(this.state.email);
+  console.log(this.state.password);
+  if (!this.state.email || !this.state.password ) alert('Must enter a email and password!!!')
+  if (this.state.email && this.state.password )
+  {axios.post(`http://localhost:3030/custom_auth`, {
+    email: this.state.email,
+    password: this.state.password
+  })}
+  // console.log(this.state.email);
+  // console.log(this.state.password);
 }
 
   render() {
@@ -29,11 +35,12 @@ handlelogin() {
            <a href={'http://localhost:3030/auth'}>
             <button className='login_button'>LOG IN with Google</button>
           </a> 
-          <input placeholder='username' type="text" onChange={(event) => {
+          <input placeholder='email' type="text" onChange={(event) => {
             this.setState({
-              username: event.target.value
+
+              email: event.target.value
             })
-          }} className="username" value={this.state.username}/>
+          }} className="email" value={this.state.email}/>
           {/*~~~~~~~~~~~~~~~  buttons separator    ~~~~~~~~~~~~~~~~~~*/}
           <input placeholder='password' type="text" onChange={(event) => {
             this.setState({
@@ -42,10 +49,6 @@ handlelogin() {
           }} className="password" value={this.state.password}/>
           
             <button onClick={this.handlelogin} className='login_button'>LOG IN CUSTOM</button>
-           
-           {/* <Link to="/login/scheduler" className="link">
-            <button className='login_button'>LOG IN</button>
-          </Link>  */}
           <a href='http://localhost:3030/auth/logout'>
             <button className='logout_button'>log out</button>
           </a>

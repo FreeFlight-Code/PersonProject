@@ -1,4 +1,4 @@
-//postgres://ezqmntzzrfjxch:e5e4ca3fd78704cbf90e9e747c880f27cc7cfad9625864a6e40be0f9275c3759@ec2-23-21-197-231.compute-1.amazonaws.com:5432/d7lju78q4gns61?ssl=true
+
 
 require('dotenv').config();
 
@@ -91,10 +91,8 @@ passport.use(new Auth0Strategy({
 //     ~~~~~~~~~~~~~~~~~      AUTH endpoints
 //kicks off process
 app.get('/auth', passport.authenticate('auth0'));
-app.get('/custom_auth', (req, res, next) => {
-    console.log(req.params)
-    
-})
+app.post('/custom_auth', api.login);
+// app.post('/custom_auth/adduser', api.adduser);
 
 
 //redirects

@@ -83,6 +83,23 @@ module.exports = {
       res.status(400).send(error);        
   })
   },
- 
+
+  login: function (req, res, next) {
+    // console.log(res);
+    
+    let db= req.app.get('db')
+    let {email, password} = req.body;
+    console.log(req.body)
+    db.login(email).then((results) => {
+      if (email === results[0].email)
+      console.log('email matches')
+      if (results[0].password === password){
+        console.log('passwords match')
+      res.status(200).send(console.log(results))};
+    }).catch((error)=>{
+      // console.log(error);
+      res.status(400).send(error);        
+  })
+  },
 
 }
