@@ -3,71 +3,75 @@
     margin: 0;
     padding: 0;
 }
-.deflogo {
-    height: 50px;
+.deflogo_home {
+    width: 25%;
+    opacity: .3;
     position: absolute;
-    top: 1%;
+    top: 3%;
     left: 2%;
+    animation: zoomin 7s; }
+    @keyframes zoomin {
+        0% {
+          opacity: 0;
+          height: 2000%;
+          width: 1000%;}
+        50% {
+          opacity: 0;
+          height: 2000%;
+          width: 1000%;}        
+        100% {
+          opacity: .3;
+          width: 25%;
+          height: auto; }
 }
+.deflogo_home:hover{
+    opacity: .5;
+}
+
 .Homepage {
     overflow: hidden; 
     height: 100vh;
 }
-
-
  a {
     text-decoration: none;
 }
-// #waterVideo_home {
-//     position: fixed;
-//     right: 0; 
-//     bottom: 0;
-//     min-width: 100%; 
-//     min-height: 100%;
-//     width: auto; 
-//     height: auto;
-//     z-index: -100;
-// }
-
-
-
  a:visited {
     color: #000000;
 } 
-
-
 a:hover {
     color: #D70C0C;
 
 }
-
 a:active {
     color: blue;
 }
-
-
-
-.def_logo {
-    height: 47vh;
-    width: 50vw;
-    margin: 5% 0 5% 5%;
-   
-  
+.deflogo {
+    height: 20%;
+    width: auto;
+    margin: 2% 0 0 0;  
+    opacity: .3;
 }
-/* .portfolio_link {
-    margin-left: 46vw;
-    font-size: 1.3em;
-    border: 4px inset gray;
-    display: inline;
-    padding: 5px;
-} */
+.deflogo:hover{
+  opacity: .5;
+}
+
 .menuholder {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    margin-top: 10%;
+    margin-top: 10%; 
+    position: relative;
+    top: 55%;
+    right: 30% ;
+    animation: slide-right 3s;}
+  
+@keyframes slide-right {
+    0% {top: 200%;
+    right: 200% }
+    100% {top: 55%;
+    right: 30% } }
     
-}
+        
 .home_menu {
     border: 2px solid black;
     border-radius: 29px;
@@ -75,14 +79,5 @@ a:active {
     margin: 0 0 1.5% 0;
     font-size: 2rem;
     /* display: inline-block; */
-    padding-left: 107%;
-    animation-name: slide-right;
-    animation-duration: 2s;
-    position: relative;
-    left: -20%;
-    
-}
-@keyframes slide-right {
-    0% {}
-    100% {}
+    padding-left: 107%;   
 }

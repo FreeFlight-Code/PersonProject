@@ -1,4 +1,4 @@
-
+// import {profile} from '../server.js';
 module.exports = {
 
   //~~~~~~~~~~~~~~~~~~~~~~  QUERIES  ~~~~~~~~~~~~~~~~~~~~~
@@ -18,8 +18,9 @@ module.exports = {
   getSingleBusiness: function (req, res) {
     let db = req.app.get('db')
     const value = req.params.id;
+    // console.log(' in getsingle business api file id = ' + value)
     db.getSingleBusiness([value]).then((results) => {
-      console.log(results);
+      // console.log(results);
       res.status(200).send(results);
     }).catch((error) => {
       console.log(error);
@@ -94,21 +95,28 @@ module.exports = {
       // console.log(!results[0])
       if (!results[0]) {
         console.log(results)
-        db.adduser([email, password]).then((results) => {
-          console.log(results)
+        db.adduser([email, password]).then((results2) => {
+          console.log(results2)
+          results.push(results2[0]);
+          console.log('results ', results);
+          // console.log(profile)
           // res.status(200).send('adduser finished')
         }
-        )
+        ).catch((error) => {
+          console.log(error);
+          res.status(400).send(error);
+        })
       }
     
 
-    if (results[0].password !== password) {
+    else if (results[0].password !== password) {
+      let id = req.params.id;
       console.log('login failure');
       //redirect to login page
     }
 
     // res.status(200);
-    if (results[0].password === password) {
+    else if (results[0].password === password) {
       console.log('login success')
       //add results to profile on props
       //redirect to scheduler page
@@ -116,9 +124,21 @@ module.exports = {
       res.status(200);
     }
   }).catch((error) => {
-    // console.log(error);
+    console.log(error);
     res.status(400).send(error);
   })
 },
+
+clientlogin: function (req, res, next) {
+  let value = req.params.id;
+  console.log('inside client api')
+  console.log(req)
+  let db = req.app.get('db');
+  db.clientlogin([value]).then((res) => {
+    console.log("response from db " + res);
+  })
+
+
+}
 
 }

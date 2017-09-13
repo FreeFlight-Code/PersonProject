@@ -1,3 +1,25 @@
+.Login {
+    text-align: center;
+    margin-top: 5vh;
+    font-size: 5em;
+    display: flex;
+    flex-direction: column;
+}
+
+.google_login_button{
+    position: absolute;
+    top: 2%;
+    left: 2%;
+}
+
+#titlesubtext{
+    font-size: 1.3em;
+}
+
+.loginLogo{
+    width: 100px;
+    height: auto;
+}
 .logout_button {
     position: absolute;
     right: 0;
@@ -5,12 +27,8 @@
     margin: 5px;
 }
 
-.Login {
-    text-align: center;
-    margin-top: 5vh;
-    font-size: 5em;
-}
-.login_button {
+
+.custom_login_button {
    padding: 5px;
    border-width: 5px;  
    border-style: ridge;
@@ -19,18 +37,16 @@
    background-color: #C8C28D;
    font-size: .5em;
 }
-.login_button:hover{
-    transform: scale(1.2);
-}
+// .custom_login_button:hover{
+//     transform: scale(1.2);
+// }
 
 
-.login_button:hover {
+.custom_login_button:hover {
    animation-name: zoom_out;
    animation-duration: 1000ms;
 }
-.title {
-    font-size: 1em;
-}
+
 /* .login_form{
     height: 25vh;
     width: 80vw;

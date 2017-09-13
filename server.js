@@ -9,7 +9,7 @@ const express = require('express'),
       Auth0Strategy = require('passport-auth0'),
       session = require('express-session');
 const massive = require('massive');
-
+// var profile = sessionStorage;
 
 const app = express();
 
@@ -30,22 +30,11 @@ ENDPOINTS  SAMPLES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 app.get('/api/businesses', api.getBusinesses);
-// app.get('/api/business/:id', api.getSingleBusiness)
-// app.post('/api/business', api.createBusiness)
-// app.put('/api/businesses/:id', api.updateBusiness)
-// app.delete('/api/business/:id', api.destroyBusiness)
+app.get('/api/business/:id', api.getSingleBusiness);
 
 app.get('/api/jobs', api.getJobs);
-// app.get('/api/job/:id', api.getSingleJob)
-// app.post('/api/job', api.createJob)
-// app.put('/api/jobs/:id', api.updateJob)
-// app.delete('/api/job/:id', api.destroyJob)
+app.get('/api/job/:id', api.getSingleJob);
 
-// app.get('/api/customers', api.getCustomers)
-// app.get('/api/customer/:id', api.getSingleCustomer)
-// app.post('/api/customer', api.createCustomer)
-// app.put('/api/customers/:id', api.updateCustomer)
-// app.delete('/api/customer/:id', api.destroyCustomer)
 
 ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Massive~~~~~~~~~`
 
@@ -95,7 +84,7 @@ passport.use(new Auth0Strategy({
 //kicks off process
 app.get('/auth', passport.authenticate('auth0'));
 app.post('/custom_auth', api.login);
-// app.post('/custom_auth/adduser', api.adduser);
+app.get('/clientlogin/:id', api.clientlogin);
 
 
 //redirects
