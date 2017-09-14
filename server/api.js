@@ -102,10 +102,12 @@ module.exports = {
           console.log('adduser ', results);
           // console.log(profile)
           // res.status(200).send('adduser finished')
+          // return res.redirect(302, 'http://localhost:3000/#/login/scheduler');
         }
         ).catch((error) => {
           console.log(error);
           res.status(400).send(error);
+          // return res.redirect(302, 'http://localhost:3000/login');
         })
       }
     

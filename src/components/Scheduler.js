@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../styles/_Scheduler.scss';
-import Form from './Form';
+// import BusinessForm from './BusinessForm';
+import ClientForm from './ClientForm';
 
 class Scheduler extends Component {
   render() {
@@ -9,7 +10,8 @@ class Scheduler extends Component {
         <a href='/auth/logout'>
             <button className='logout_button'>log out</button>
           </a>
-          < Form />
+          < ClientForm />
+          {/* < BusinessForm /> */}
          
       </div>
     );

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../styles/_Form.scss';
+import '../styles/_BusinessForm.scss';
 import axios from 'axios';
 // import { profile } from '../server';
 
