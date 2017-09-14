@@ -89,16 +89,17 @@ module.exports = {
     // console.log(res);
 
     let db = req.app.get('db')
-    let { email, password } = req.body;
-    // console.log(req.body)
+    let { email, password, business_id} = req.body;
+    // parseInt(business_id);
+    // console.log('backend api.login' + req.body)
     db.login(email).then((results) => {
       // console.log(!results[0])
       if (!results[0]) {
-        console.log(results)
-        db.adduser([email, password]).then((results2) => {
-          console.log(results2)
+        // console.log(results + ' should be empty string')
+        db.adduser([email, password, business_id]).then((results2) => {
+          // console.log(results2)
           results.push(results2[0]);
-          console.log('results ', results);
+          console.log('adduser ', results);
           // console.log(profile)
           // res.status(200).send('adduser finished')
         }

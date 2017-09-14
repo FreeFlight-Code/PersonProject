@@ -12,7 +12,8 @@ class Login extends Component {
         this.setState({
           businessName: res.data[0].business_name,
           link: res.data[0].redirect,
-          logo: res.data[0].logo
+          logo: res.data[0].logo,
+          business_id: res.data[0].id
         })
       })
   }
@@ -23,6 +24,7 @@ class Login extends Component {
       email: "",
       password: "",
       businessName: "",
+      business_id: "",
       link: "unavailable",
       logo: "",
       profile: ""
@@ -35,12 +37,13 @@ class Login extends Component {
     // console.log(this.state.password);
     if (!this.state.email || !this.state.password) alert('Must enter a email and password!!!')
     if (this.state.email && this.state.password) {
-      axios.post(`http://localhost:3030/custom_auth`, {
+      axios.post(`http://localhost:3030/client_auth`, {
         email: this.state.email,
-        password: this.state.password
+        password: this.state.password,
+        business_id: this.state.business_id
       })
     }
-    // console.log(this.state.email);
+    console.log(this.state);
     // console.log(this.state.password);
   }
 
@@ -74,6 +77,7 @@ class Login extends Component {
         }} className="password" value={this.state.password} />
 
         <button onClick={this.handlelogin} className='custom_login_button'>LOG IN CUSTOM</button>
+
         <a href='http://localhost:3030/auth/logout'>
           <button className='logout_button'>log out</button>
         </a>

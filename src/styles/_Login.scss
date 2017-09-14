@@ -13,12 +13,13 @@
 }
 
 #titlesubtext{
-    font-size: 1.3em;
+    font-size: .4em;
 }
 
 .loginLogo{
     width: 100px;
     height: auto;
+    margin: 0 auto;
 }
 .logout_button {
     position: absolute;
@@ -26,7 +27,11 @@
     top: 0;
     margin: 5px;
 }
-
+.custom_login_button input {
+    width: 23%;
+    min-width: 400px;
+    padding: 3px;
+}
 
 .custom_login_button {
    padding: 5px;
@@ -37,9 +42,9 @@
    background-color: #C8C28D;
    font-size: .5em;
 }
-// .custom_login_button:hover{
-//     transform: scale(1.2);
-// }
+.custom_login_button:hover{
+    transform: scale(1.2);
+}
 
 
 .custom_login_button:hover {

@@ -83,7 +83,7 @@ passport.use(new Auth0Strategy({
 //     ~~~~~~~~~~ MY  AUTH endpoints    ~~~~~~~~
 //kicks off process
 app.get('/auth', passport.authenticate('auth0'));
-app.post('/custom_auth', api.login);
+app.post('/client_auth', api.login);
 app.get('/clientlogin/:id', api.clientlogin);
 
 
