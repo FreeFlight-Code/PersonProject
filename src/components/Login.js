@@ -25,27 +25,27 @@ class Login extends Component {
       password: "",
       businessName: "",
       business_id: "",
-      link: "unavailable",
+      link: "",
       logo: "",
-      profile: ""
+      auth: ''
     })
     this.handlelogin = this.handlelogin.bind(this);
   }
+
+  
 
   handlelogin() {
     // console.log(this.state.email);
     // console.log(this.state.password);
     if (!this.state.email || !this.state.password) alert('Must enter a email and password!!!')
     if (this.state.email && this.state.password) {
+      // console.log(this.props)
       axios.post(`http://localhost:3030/client_auth`, {
         email: this.state.email,
         password: this.state.password,
         business_id: this.state.business_id
-      })
-      
-    }
-    console.log(this.state);
-    // console.log(this.state.password);
+      });
+    } // console.log(this.state.password);
   }
 
   render() {

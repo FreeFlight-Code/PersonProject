@@ -13,7 +13,24 @@ import AboutUs from './marketingapp/components/AboutUs';
 import './styles/App.css';
 
 
+
 class App extends Component {
+
+  constructor(props){
+    super(props)
+    this.state = {
+      auth: 'unset'
+    }
+    this.setUserInfo = this.setUserInfo.bind(this);
+  }
+
+  setUserInfo (info) {
+    alert(info);
+    this.setState({
+      auth: info
+    })
+  }
+
   render() {
     return (
       <div className="App">
@@ -25,8 +42,8 @@ class App extends Component {
                     <Route component={ LatestNews } path="/marketing/latestNews" /> 
                     <Route component={ Testimonials } path="/marketing/testimonials" />
                     <Route component={ AboutUs } path="/marketing/aboutUs" /> 
-                    <Route component={ Scheduler } path="/login/scheduler" />
-                    <Route component={ Login } path="/login" />
+                    <Route render={ props => <Scheduler {...props} auth={this.state.auth}/>} path="/login/scheduler" />
+                    <Route render={ props => <Login {...props} setUserInfo={this.setUserInfo}/>} path="/login" />
                     <Route component={ Home } path="/" exact />                
                 </Switch>            
       </div>

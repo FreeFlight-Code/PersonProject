@@ -95,16 +95,16 @@ module.exports = {
     db.login(email).then((results) => {
       // console.log(!results[0])
       if (!results[0]) {
-        // console.log(results + ' should be empty string')
-        db.adduser([email, password, business_id]).then((results2) => {
+        let auth = 'client';
+        db.adduser([email, password, business_id, auth]).then((results2) => {
           // console.log(results2)
           results.push(results2[0]);
           console.log('adduser ', results);
           // console.log(profile)
-          // res.status(200).send('adduser finished')
+          res.status(200).send(results)
           // return res.redirect(302, 'http://localhost:3000/#/login/scheduler');
-        }
-        ).catch((error) => {
+        })
+        .catch((error) => {
           console.log(error);
           res.status(400).send(error);
           // return res.redirect(302, 'http://localhost:3000/login');
@@ -112,19 +112,23 @@ module.exports = {
       }
     
 
-    else if (results[0].password !== password) {
-      let id = req.params.id;
-      console.log('login failure');
-      //redirect to login page
-    }
+      else if (results[0].password !== password) {
+        let id = req.params.id;
+        console.log('login failure');
+        res.status(400).send('login failure');
+        
+        //redirect to login page
+      }
 
     // res.status(200);
     else if (results[0].password === password) {
-      console.log('login success')
+      db.login(email).then((results) => {
+      // console.log('login success...else if 2...')
+      // console.log(results[0], 'results[0]')
       //add results to profile on props
       //redirect to scheduler page
-      
-      res.status(200);
+      res.status(200).send(results[0]);
+      })
     }
   }).catch((error) => {
     console.log(error);
