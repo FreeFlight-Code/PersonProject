@@ -25,7 +25,7 @@ class App extends Component {
       business_id: "",
       link: "",
       logo: "",
-      auth: "unset"
+      auth: ""
     }
     this.setUserInfo = this.setUserInfo.bind(this);
   }
@@ -36,7 +36,7 @@ class App extends Component {
       auth: info
     })
   }
-
+  componentDidMount(){console.log(this.props, this.state, '...props and state in app')}
   render() {
     return (
       <div className="App">

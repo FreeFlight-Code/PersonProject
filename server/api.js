@@ -123,9 +123,8 @@ module.exports = {
         res.status(400).send('login failure');
       }
     else if (results[0].password === password) {
-      db.loginb(email).then((results) => { 
-        //redirect to scheduler page
-      res.status(200).send(results);
+      db.loginb(email).then((results) => {
+      res.status(200).send({user: results[0], redirect: '/login/scheduler'});
       })
     }
   }).catch((error) => {

@@ -14,12 +14,15 @@ class Login extends Component {
           logo: res.data[0].logo,
           business_id: res.data[0].id
         })
+        console.log(this.state, 'login mount')
       })
   }
 
   constructor(props) {
     super(props)
     this.state = ({
+      c_name: "",
+      phone: "",
       email: "",
       password: "",
       businessName: "",
@@ -39,15 +42,21 @@ class Login extends Component {
         password: this.state.password,
         business_id: this.state.business_id
       }).then((result) => {
-        // console.log(result.data[0]);
+        console.log(result.data.user, 'data coming from backend to handlelogin');
         this.setState({ 
-          businessName: result.data[0].business_name,
-          link: result.data[0].redirect,
-          logo: result.data[0].logo,
-          auth: result.data[0].auth
+          businessName: result.data.user.business_name,
+          link: result.data.user.redirect,
+          logo: result.data.user.logo,
+          auth: result.data.user.auth,
+          c_name: result.data.user.name,
+          phone: result.data.user.phone
+        })
+        this.setState({
+          password: ""
         })
         this.props.setUserInfo(this.state);
-        // console.log('in handlelogin' + this.state)
+        console.log('props in handlelogin' + this.props)
+        this.props.history.push(result.data.redirect);
       });
     }
   }
