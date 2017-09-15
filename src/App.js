@@ -19,13 +19,19 @@ class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-      auth: 'unset'
+      email: "",
+      password: "",
+      businessName: "",
+      business_id: "",
+      link: "",
+      logo: "",
+      auth: "unset"
     }
     this.setUserInfo = this.setUserInfo.bind(this);
   }
 
   setUserInfo (info) {
-    alert(info);
+    // alert(info);
     this.setState({
       auth: info
     })

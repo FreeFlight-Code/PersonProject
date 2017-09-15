@@ -34,6 +34,7 @@ app.get('/api/business/:id', api.getSingleBusiness);
 
 app.get('/api/jobs', api.getJobs);
 app.get('/api/job/:id', api.getSingleJob);
+app.get('/api/jobSingleCustomer/:id', api.getJobsSingleCustomer);
 
 
 ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Massive~~~~~~~~~`
@@ -84,8 +85,7 @@ passport.use(new Auth0Strategy({
 //kicks off process
 app.get('/auth', passport.authenticate('auth0'));
 
-app.post('/client_auth', api.login, function (){ return res.redirect(302, 'http://localhost:3000/login/scheduler'); 
-});
+app.post('/client_auth', api.login);
 
 app.get('/clientlogin/:id', api.clientlogin);
 

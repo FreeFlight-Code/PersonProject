@@ -7,7 +7,7 @@ export default class Client_Form extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: "",
+      cust_id: "",
       name: "",
       date: "",
       state: "",
@@ -26,8 +26,9 @@ export default class Client_Form extends Component {
 
   handleSearch(event) {
     event.preventDefault()
-    axios.get(`/api/jobs`).then((res) => {
-      // console.log(res.data)
+    let id = this.state.cust_id;
+    axios.get('http://localhost:3030/api/jobSingleCustomer/' + id).then((res) => {
+      // console.log('handlesearch in  clientform'+res.data)
       let name = (this.state.name).toLowerCase();
       let state = (this.state.state).toLowerCase();
       let city = (this.state.city).toLowerCase();

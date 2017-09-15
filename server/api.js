@@ -73,10 +73,22 @@ module.exports = {
       res.status(400).send(error);
     })
   },
+  
   getSingleJob: function (req, res) {
     let db = req.app.get('db')
     const value = req.params.id;
     db.getSingleJob([value]).then((results) => {
+      console.log(results);
+      res.status(200).send(results);
+    }).catch((error) => {
+      console.log(error);
+      res.status(400).send(error);
+    })
+  },
+  getJobsSingleCustomer: function (req, res) {
+    let db = req.app.get('db')
+    const value = req.params.id;
+    db.getJobsSingleCustomer([value]).then((results) => {
       console.log(results);
       res.status(200).send(results);
     }).catch((error) => {
@@ -90,24 +102,17 @@ module.exports = {
 
     let db = req.app.get('db')
     let { email, password, business_id} = req.body;
-    // parseInt(business_id);
-    // console.log('backend api.login' + req.body)
     db.login(email).then((results) => {
-      // console.log(!results[0])
       if (!results[0]) {
         let auth = 'client';
         db.adduser([email, password, business_id, auth]).then((results2) => {
-          // console.log(results2)
           results.push(results2[0]);
           console.log('adduser ', results);
-          // console.log(profile)
           res.status(200).send(results)
-          // return res.redirect(302, 'http://localhost:3000/#/login/scheduler');
         })
         .catch((error) => {
           console.log(error);
           res.status(400).send(error);
-          // return res.redirect(302, 'http://localhost:3000/login');
         })
       }
     
@@ -116,18 +121,11 @@ module.exports = {
         let id = req.params.id;
         console.log('login failure');
         res.status(400).send('login failure');
-        
-        //redirect to login page
       }
-
-    // res.status(200);
     else if (results[0].password === password) {
-      db.login(email).then((results) => {
-      // console.log('login success...else if 2...')
-      // console.log(results[0], 'results[0]')
-      //add results to profile on props
-      //redirect to scheduler page
-      res.status(200).send(results[0]);
+      db.loginb(email).then((results) => { 
+        //redirect to scheduler page
+      res.status(200).send(results);
       })
     }
   }).catch((error) => {

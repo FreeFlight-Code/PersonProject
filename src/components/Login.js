@@ -39,11 +39,15 @@ class Login extends Component {
         password: this.state.password,
         business_id: this.state.business_id
       }).then((result) => {
-        this.setState({
-          auth: result.data.auth
+        // console.log(result.data[0]);
+        this.setState({ 
+          businessName: result.data[0].business_name,
+          link: result.data[0].redirect,
+          logo: result.data[0].logo,
+          auth: result.data[0].auth
         })
-        this.props.setUserInfo(this.state.auth);
-        console.log('in handlelogin' + this.state)
+        this.props.setUserInfo(this.state);
+        // console.log('in handlelogin' + this.state)
       });
     }
   }
