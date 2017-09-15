@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/_Scheduler.scss';
-import BusinessForm from './BusinessForm';
+// import BusinessForm from './BusinessForm';
 import ClientForm from './ClientForm';
 
 class Scheduler extends Component {
@@ -18,10 +18,10 @@ class Scheduler extends Component {
         <a href='/auth/logout'>
             <button className='logout_button'>log out</button>
           </a>
-      { this.props.auth === 'business' ?
+      {/* { this.props.auth === 'business' ?
           < BusinessForm /> :
-          < ClientForm /> }
-          
+          < ClientForm /> } */}
+          < ClientForm />
 
 
          

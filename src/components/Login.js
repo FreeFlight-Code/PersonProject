@@ -8,7 +8,6 @@ class Login extends Component {
     let params = this.props.location.pathname.split('/').pop();
     axios.get('http://localhost:3030/api/business/' + params)
       .then((res) => {
-        console.log(res.data[0])
         this.setState({
           businessName: res.data[0].business_name,
           link: res.data[0].redirect,
@@ -27,33 +26,29 @@ class Login extends Component {
       business_id: "",
       link: "",
       logo: "",
-      auth: ''
+      auth: "unset"
     })
     this.handlelogin = this.handlelogin.bind(this);
   }
 
-  
-
   handlelogin() {
-    // console.log(this.state.email);
-    // console.log(this.state.password);
     if (!this.state.email || !this.state.password) alert('Must enter a email and password!!!')
     if (this.state.email && this.state.password) {
-      // console.log(this.props)
       axios.post(`http://localhost:3030/client_auth`, {
         email: this.state.email,
         password: this.state.password,
         business_id: this.state.business_id
+      }).then((result) => {
+        this.setState({
+          auth: result.data.auth
+        })
+        this.props.setUserInfo(this.state.auth);
+        console.log('in handlelogin' + this.state)
       });
-    } // console.log(this.state.password);
+    }
   }
 
   render() {
-
-
-
-
-
     return (
       <div className="Login">
         <img className='loginLogo' src={this.state.logo} alt='DEF' />
@@ -82,15 +77,6 @@ class Login extends Component {
         <a href='http://localhost:3030/auth/logout'>
           <button className='logout_button'>log out</button>
         </a>
-
-        {/* <div className='login_form'>
-              Email:
-              <input type="text" name="email" placeholder="your@email.here"/>
-              Password:
-              <input type="text" name="password" placeholder="password"/>
-              <Link to="/login/scheduler" className="link"><input type="submit" value="Submit"/></Link>
-          </div> */}
-        {/* <h1 className="name">{profile}</h1> */}
       </div>
     );
   }

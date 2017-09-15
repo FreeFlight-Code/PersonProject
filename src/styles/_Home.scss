@@ -3,29 +3,43 @@
     margin: 0;
     padding: 0;
 }
+
+.bgvideo_home {
+    display: block;
+      position: absolute;
+      z-index: 0;
+      width: 110vw; 
+      height: auto;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      margin: auto;
+      }
 .deflogo_home {
     width: 25%;
-    opacity: .3;
+    opacity: .6;
     position: absolute;
-    top: 3%;
-    left: 2%;
+    top: 5%;
+    left: 5%;
     animation: zoomin 7s; }
     @keyframes zoomin {
         0% {
-          opacity: 0;
+          opacity: 0.1;
           height: 2000%;
           width: 1000%;}
         50% {
-          opacity: 0;
+          opacity: .2;
           height: 2000%;
           width: 1000%;}        
         100% {
-          opacity: .3;
+          opacity: .6;
           width: 25%;
           height: auto; }
 }
 .deflogo_home:hover{
-    opacity: .5;
+    opacity: .8;
 }
 
 .Homepage {
@@ -36,7 +50,7 @@
     text-decoration: none;
 }
  a:visited {
-    color: #000000;
+    color: #747373;
 } 
 a:hover {
     color: #D70C0C;
@@ -57,6 +71,9 @@ a:active {
 
 .menuholder {
     display: flex;
+    opacity: .7;
+    // background-color: darkgray;
+    color: white;
     flex-direction: column;
     justify-content: flex-end;
     margin-top: 10%; 
