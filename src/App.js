@@ -31,7 +31,7 @@ class App extends Component {
   }
 
   setUserInfo (info) {
-    // alert(info);
+    alert(info);
     this.setState({
       auth: info
     })

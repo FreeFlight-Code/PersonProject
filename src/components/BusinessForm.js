@@ -100,18 +100,18 @@ export default class Form extends Component {
         <form className='form_container'>
           Search By:
 
-          <input onChange={(e) => this.setState({ 'name': e.target.value })} type="text" placeholder='Job name' value={this.state.name}></input>
+          <input className='input_business' onChange={(e) => this.setState({ 'name': e.target.value })} type="text" placeholder='Job name' value={this.state.name}></input>
 
-          <input onChange={(e) => this.setState({ 'state': e.target.value })}
+          <input className='input_business' onChange={(e) => this.setState({ 'state': e.target.value })}
             type="text" placeholder='State' value={this.state.state}></input>
 
-          <input onChange={(e) => this.setState({ 'city': e.target.value })} type="text" placeholder='City' value={this.state.city}></input>
+          <input className='input_business' onChange={(e) => this.setState({ 'city': e.target.value })} type="text" placeholder='City' value={this.state.city}></input>
 
           <button onClick={this.handleSearch} className="searchButton">Get Jobs</button>
 
           <button onClick={this.handleDetails} className="searchButton">Get Details</button>
 
-          <input onChange={(e) => this.setState({ 'id': e.target.value })} type="text" placeholder='Job ID' value={this.state.id}></input>
+          <input className='input_business' onChange={(e) => this.setState({ 'id': e.target.value })} type="text" placeholder='Job ID' value={this.state.id}></input>
 
         </form>
         <div className="results">Results

@@ -6,15 +6,18 @@ class Login extends Component {
 
   componentWillMount() {
     let params = this.props.location.pathname.split('/').pop();
+    if (params === 'Login' || params === 'login') {params = 1}
+    // console.log(params)
     axios.get('http://localhost:3030/api/business/' + params)
       .then((res) => {
+        // console.log(res, 'component will mount');
         this.setState({
           businessName: res.data[0].business_name,
           link: res.data[0].redirect,
           logo: res.data[0].logo,
           business_id: res.data[0].id
         })
-        console.log(this.state, 'login mount')
+        // console.log(this.state, 'this.state...at login mount')
       })
   }
 
@@ -72,20 +75,20 @@ class Login extends Component {
         <a href={'http://localhost:3030/auth'}>
           <button className='google_login_button'>LOG IN with Google</button>
         </a>
-        <input placeholder='email' type="text" onChange={(event) => {
+        <input className='input_login email' placeholder='email' type="text" onChange={(event) => {
           this.setState({
 
             email: event.target.value
           })
-        }} className="email" value={this.state.email} />
+        }}  value={this.state.email} />
         {/*~~~~~~~~~~~~~~~  buttons separator    ~~~~~~~~~~~~~~~~~~*/}
-        <input placeholder='password' type="text" onChange={(event) => {
+        <input className='input_login password' placeholder='password' type="text" onChange={(event) => {
           this.setState({
             password: event.target.value
           })
-        }} className="password" value={this.state.password} />
+        }} value={this.state.password} />
 
-        <button onClick={this.handlelogin} className='custom_login_button'>LOG IN CUSTOM</button>
+        <button onClick={this.handlelogin} className='custom_login_button'>LOG IN</button>
 
         <a href='http://localhost:3030/auth/logout'>
           <button className='logout_button'>log out</button>

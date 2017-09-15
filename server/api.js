@@ -7,7 +7,7 @@ module.exports = {
   getBusinesses: function (req, res) {
     let db = req.app.get('db')
     db.getBusinesses().then((results) => {
-      console.log(results);
+      // console.log(results);
       res.status(200).send(results);
     }).catch((error) => {
       console.log(error);
@@ -124,6 +124,7 @@ module.exports = {
       }
     else if (results[0].password === password) {
       db.loginb(email).then((results) => {
+        console.log(results, '...in backend')
       res.status(200).send({user: results[0], redirect: '/login/scheduler'});
       })
     }
