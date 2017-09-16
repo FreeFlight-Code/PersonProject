@@ -45,7 +45,7 @@ class Login extends Component {
         password: this.state.password,
         business_id: this.state.business_id
       }).then((result) => {
-        console.log(result.data.user, 'data coming from backend to handlelogin');
+        // console.log(result.data.user, 'data coming from backend to handlelogin');
         this.setState({ 
           businessName: result.data.user.business_name,
           link: result.data.user.redirect,
@@ -58,7 +58,7 @@ class Login extends Component {
           password: ""
         })
         this.props.setUserInfo(this.state);
-        console.log('props in handlelogin' + this.props)
+        // console.log('props in handlelogin' + this.props)
         this.props.history.push(result.data.redirect);
       });
     }

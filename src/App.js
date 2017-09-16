@@ -31,12 +31,12 @@ class App extends Component {
   }
 
   setUserInfo (info) {
-    alert(info);
+    // alert(info);
     this.setState({
       auth: info
     })
   }
-  componentDidMount(){console.log(this.props, this.state, '...props and state in app')}
+  // componentDidMount(){console.log(this.props, this.state, '...props and state in app')}
   render() {
     return (
       <div className="App">

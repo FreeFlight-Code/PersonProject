@@ -23,10 +23,13 @@ export default class Client_Form extends Component {
 
   }
 
-
+componentWillMount() {
+  // console.log(this.props.auth, 'props auth')
+}
   handleSearch(event) {
     event.preventDefault()
     let id = this.state.cust_id;
+    console.log(this.props, 'props on client')
     axios.get('http://localhost:3030/api/jobSingleCustomer/' + id).then((res) => {
       // console.log('handlesearch in  clientform'+res.data)
       let name = (this.state.name).toLowerCase();

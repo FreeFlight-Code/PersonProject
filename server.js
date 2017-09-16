@@ -87,7 +87,7 @@ app.get('/auth', passport.authenticate('auth0'));
 
 app.post('/client_auth', api.login);
 
-app.get('/clientlogin/:id', api.clientlogin);
+app.get('/sessionAuth', api.sessionAuth);
 
 
 //redirects

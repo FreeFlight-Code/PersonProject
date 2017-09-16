@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../styles/_Scheduler.scss';
 import BusinessForm from './BusinessForm';
 import ClientForm from './ClientForm';
+import axios from 'axios';
 
 class Scheduler extends Component {
   constructor(props){
@@ -14,14 +15,20 @@ class Scheduler extends Component {
       logo: this.props.auth.logo,
       auth: this.props.auth.auth
     })
- 
+    // this.props.user = this.state;
   }
   
 
 
-  componentDidMount(){
+  componentWillMount(){
+    axios.get('http://localhost:3030/sessionAuth').then((res) => {
+      console.log(res, 'req.session on scheduler')
+    })
     console.log (this.state, 'state on scheduler')
+    console.log(this.props.auth, 'props.auth')
+
   }
+
   render() {
     return (
       <div className="Scheduler">

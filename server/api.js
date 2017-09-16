@@ -119,12 +119,14 @@ module.exports = {
 
       else if (results[0].password !== password) {
         let id = req.params.id;
-        console.log('login failure');
+        // console.log('login failure');
         res.status(400).send('login failure');
       }
     else if (results[0].password === password) {
       db.loginb(email).then((results) => {
-        console.log(results, '...in backend')
+        req.session.profile = results[0];
+        // console.log(req.session.profile, '...req.session backend')
+        // console.log(results, '...in backend')
       res.status(200).send({user: results[0], redirect: '/login/scheduler'});
       })
     }
@@ -134,15 +136,8 @@ module.exports = {
   })
 },
 
-clientlogin: function (req, res, next) {
-  let value = req.params.id;
-  console.log('inside client api')
-  console.log(req)
-  let db = req.app.get('db');
-  db.clientlogin([value]).then((res) => {
-    console.log("response from db " + res);
-  })
-
+sessionAuth: function (req, res) {
+  res.status(200).send(req.session);
 
 }
 
