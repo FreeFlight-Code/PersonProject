@@ -34,10 +34,10 @@ class Scheduler extends Component {
       <div className="Scheduler">
         <div className="schedulerHeader">
           Welcome {this.state.email}!
-        </div>
         <a href='/auth/logout'>
             <button className='logout_button'>log out</button>
           </a>
+        </div>
       { this.state.auth === 'business' ?
           < BusinessForm /> :
           < ClientForm /> } 

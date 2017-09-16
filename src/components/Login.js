@@ -67,32 +67,37 @@ class Login extends Component {
   render() {
     return (
       <div className="Login">
-        <img className='loginLogo' src={this.state.logo} alt='DEF' />
-        <div className='loginBusinessName'>
-          {this.state.businessName}<div id="titlesubtext">Custom Scheduler</div>
+        <div id='headerLogin'>
+
+              <img className='loginLogo' src={this.state.logo} alt='DEF' />
+              <div className='loginBusinessName'>
+                {this.state.businessName}<div id="titlesubtext">Custom Scheduler</div>
+              </div>
+        
+        <div>
+              <a href={'http://localhost:3030/auth'}>
+                <button className='google_login_button'>GOOGLE+</button>
+              </a>
+              <input className='input_login email' placeholder='email' type="text" onChange={(event) => {
+                this.setState({
+
+                  email: event.target.value
+                })
+              }}  value={this.state.email} />
+              {/*~~~~~~~~~~~~~~~  buttons separator    ~~~~~~~~~~~~~~~~~~*/}
+              <input className='input_login password' placeholder='password' type="text" onChange={(event) => {
+                this.setState({
+                  password: event.target.value
+                })
+              }} value={this.state.password} />
+
+              <button onClick={this.handlelogin} className='custom_login_button'>LOG IN</button>
+
+              <a href='http://localhost:3030/auth/logout'>
+                <button className='logout_button'>log out</button>
+              </a>
+          </div>
         </div>
-
-        <a href={'http://localhost:3030/auth'}>
-          <button className='google_login_button'>LOG IN with Google</button>
-        </a>
-        <input className='input_login email' placeholder='email' type="text" onChange={(event) => {
-          this.setState({
-
-            email: event.target.value
-          })
-        }}  value={this.state.email} />
-        {/*~~~~~~~~~~~~~~~  buttons separator    ~~~~~~~~~~~~~~~~~~*/}
-        <input className='input_login password' placeholder='password' type="text" onChange={(event) => {
-          this.setState({
-            password: event.target.value
-          })
-        }} value={this.state.password} />
-
-        <button onClick={this.handlelogin} className='custom_login_button'>LOG IN</button>
-
-        <a href='http://localhost:3030/auth/logout'>
-          <button className='logout_button'>log out</button>
-        </a>
       </div>
     );
   }

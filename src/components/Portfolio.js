@@ -7,8 +7,8 @@ class Portfolio extends Component {
   render() {
     return (
       <div className="Portfolio">
-        <Link to="/" className="link"><img src={deflogo} alt="logo" className='deflogo'/></Link>
-         Work Samples
+        <Link to="/" className="link"><img src={deflogo} alt="logo" className='deflogo_portfolio'/></Link>
+         <div id='portfolioTitle'>Work Samples</div>
          <Link to="/lawlibrary" className="link"><div className="lawlibrary">LAW LIBRARY</div></Link>
           <Link to="/marketing/home" className="link"><div className="marketing">MARKETING</div></Link>
           <Link to="/Login" className="link"><div className="portfolio_login">SCHEDULER</div></Link>

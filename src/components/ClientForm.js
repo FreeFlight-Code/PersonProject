@@ -99,7 +99,7 @@ componentWillMount() {
 
     return (
       <div className="Client_Form">
-
+        
 
         <form className='Client_Form_container'>
           Add:
@@ -118,7 +118,7 @@ componentWillMount() {
           <input className='input_client' onChange={(e) => this.setState({ 'id': e.target.value })} type="text" placeholder='Job ID' value={this.state.id}></input>
 
         </form>
-        <div className="results">{this.state.name}
+        <div id='client results' className="results">{this.state.name}
           <div className="titleHolder">
               <div className="title">ID</div>
               <div className="title">Job Name</div>

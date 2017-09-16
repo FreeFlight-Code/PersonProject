@@ -4,6 +4,21 @@
     padding: 0;
 }
 
+a {
+   text-decoration: none;
+}
+a:visited {
+   color: #747373;
+} 
+a:hover {
+   color: #D70C0C;
+
+}
+
+.Homepage {
+    background-color: black;
+}
+
 .bgvideo_home {
     display: block;
       position: absolute;
@@ -18,12 +33,12 @@
       margin: auto;
       }
 .deflogo_home {
-    width: 25%;
+    width: 32%;
     opacity: .6;
     position: absolute;
-    top: 5%;
+    top: 7%;
     left: 5%;
-    animation: zoomin 7s; }
+    // animation: zoomin 7s; }
     @keyframes zoomin {
         0% {
           opacity: 0.1;
@@ -38,6 +53,7 @@
           width: 25%;
           height: auto; }
 }
+}
 .deflogo_home:hover{
     opacity: .8;
 }
@@ -45,56 +61,50 @@
 .Homepage {
     overflow: hidden; 
     height: 100vh;
-}
- a {
-    text-decoration: none;
-}
- a:visited {
-    color: #747373;
-} 
-a:hover {
-    color: #D70C0C;
 
 }
-a:active {
-    color: blue;
-}
-.deflogo {
-    height: 20%;
-    width: auto;
-    margin: 2% 0 0 0;  
-    opacity: .3;
-}
-.deflogo:hover{
-  opacity: .5;
-}
-
 .menuholder {
     display: flex;
+    width: 120%;
+    margin: 10px;
     opacity: .7;
     // background-color: darkgray;
     color: white;
     flex-direction: column;
     justify-content: flex-end;
-    margin-top: 10%; 
     position: relative;
-    top: 55%;
-    right: 30% ;
-    animation: slide-right 3s;}
+    top: 0;
+    right: 0; 
+     // animation: slide-right 3s;}
+}
   
 @keyframes slide-right {
     0% {top: 200%;
     right: 200% }
     100% {top: 55%;
-    right: 30% } }
+    right: 30% } 
+}
     
         
-.home_menu {
-    border: 2px solid black;
+.home_menu_portfolio, .home_menu_social, .home_menu_contact {
+    border: 2px solid #424242;
     border-radius: 29px;
-    transform: rotate(-30deg);
+    transform: rotate(-20deg);
     margin: 0 0 1.5% 0;
     font-size: 2rem;
+    position: relative;
+    top: 60vh;
+    right: 30%;
+    padding-left: 70%;
     /* display: inline-block; */
-    padding-left: 107%;   
+    // padding-left: 90%;   
+    
+    @media (min-width: 580px) { 
+        padding-left: 80%;
+        margin: 0 0 .7% 0;
+    }
+    @media (min-width: 1180px) { 
+        padding-left: 92%;
+        margin: 0 0 .5% 0;
+    }
 }

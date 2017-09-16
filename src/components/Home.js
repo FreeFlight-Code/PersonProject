@@ -24,9 +24,9 @@ class Home extends Component {
         
         <img src={deflogo} className="deflogo_home" alt="logo" />
         <div className="menuholder">
-        <Link to="/Portfolio"><div className='home_menu portfolio_home'>Portfolio</div></Link>
-          <div className='home_menu social'>Social</div>
-          <div className='home_menu contact'>Contact</div>
+        <Link to="/Portfolio"><div className='home_menu_portfolio'>Portfolio</div></Link>
+          <div className='home_menu_social'>Social</div>
+          <div className='home_menu_contact'>Contact</div>
         </div>
       </div>
 
