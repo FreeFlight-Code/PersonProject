@@ -36,6 +36,7 @@ app.get('/api/business/:id', api.getSingleBusiness);
 app.get('/api/jobs', api.getJobs);
 app.get('/api/job/:id', api.getSingleJob);
 app.get('/api/jobSingleCustomer/:id', api.getJobsSingleCustomer);
+app.post('/api/addJob', api.addJob);
 
 
 ///~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Massive~~~~~~~~~`

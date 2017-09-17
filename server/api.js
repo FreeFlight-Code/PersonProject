@@ -65,9 +65,10 @@ module.exports = {
   },
   addJob: function (req, res) {
     let db= req.app.get('db')
-    console.log(req.body);
-    db.addJob([value]).then((results) => {
-      console.log(results);
+    console.log(req.body, 'body');
+    let {cust_id, date, city, state, comments, name, business_id} = req.body;
+    db.addJob([business_id, cust_id, name, date, city, state, comments]).then((results) => {
+      console.log(results, 'results');
       res.status(200).send(results);
     }).catch((error)=>{
         console.log(error);
@@ -100,7 +101,7 @@ module.exports = {
     let db = req.app.get('db')
     const value = req.params.id;
     db.getJobsSingleCustomer([value]).then((results) => {
-      console.log(results);
+      // console.log('jobs singlecustomer backend...' + results);
       res.status(200).send(results);
     }).catch((error) => {
       console.log(error);
@@ -137,7 +138,7 @@ module.exports = {
       db.loginb(email).then((results) => {
         req.session.profile = results[0];
         // console.log(req.session.profile, '...req.session backend')
-        console.log(results, '...in backend')
+        // console.log(results, '...in backend')
       res.status(200).send({user: results[0], redirect: '/login/scheduler'});
       })
     }

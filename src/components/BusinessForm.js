@@ -19,7 +19,8 @@ export default class Form extends Component {
     };
     this.handleSearch = this.handleSearch.bind(this);
     this.handleDetails = this.handleDetails.bind(this);
-
+    this.myDate = this.myDate.bind(this);
+    
 
   }
 
@@ -91,6 +92,12 @@ export default class Form extends Component {
     })
   }
 
+  myDate (date) {
+    let d= new Date (date)
+    return (d.getMonth()+1) + '/' + d.getDate() + '/' + d.getFullYear()
+    }
+
+
   render() {
 
     return (
@@ -109,9 +116,9 @@ export default class Form extends Component {
 
           <button onClick={this.handleSearch} className="searchButton">Get Jobs</button>
 
-          <button onClick={this.handleDetails} className="searchButton">Get Details</button>
+          {/* <button onClick={this.handleDetails} className="searchButton">Get Details</button>
 
-          <input className='input_business' onChange={(e) => this.setState({ 'id': e.target.value })} type="text" placeholder='Job ID' value={this.state.id}></input>
+          <input className='input_business' onChange={(e) => this.setState({ 'id': e.target.value })} type="text" placeholder='Job ID' value={this.state.id}></input> */}
 
         </form>
         <div className="results">Results
@@ -123,18 +130,22 @@ export default class Form extends Component {
               <div className="title">Job State</div>
           </div>
           <div className='list_container'>
-            {this.state.list.map((element, i) => {
-              return (
-                <div className='element_list' key={element.id}>
-                  <div>{element.id}</div>
-                  <div>{element.jobname}</div>
-                  <div>{(element.jobdate)}</div>
-                  <div>{element.city}</div>
-                  <div>{element.state}</div>
-                </div>
+          {  this.state.list.length ? 
+            this.state.list.map((element, i) => {
 
-              );
-            })}
+            let mdate = this.myDate(element.jobdate);
+            return (
+              <div className='element_list' key={element.id}>
+                <div>{element.id}</div>
+                <div>{element.jobname}</div>
+                <div>{mdate}</div>
+                <div>{element.city}</div>
+                <div>{element.state}</div>
+              </div>
+              
+            );
+          }) : <div> ~~~~~  No Data  ~~~~~ </div>
+          }
           </div>
         </div>
 
