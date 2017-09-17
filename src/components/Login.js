@@ -47,17 +47,18 @@ class Login extends Component {
       }).then((result) => {
         // console.log(result.data.user, 'data coming from backend to handlelogin');
         this.setState({ 
-          businessName: result.data.user.business_name,
-          link: result.data.user.redirect,
-          logo: result.data.user.logo,
-          auth: result.data.user.auth,
-          c_name: result.data.user.name,
-          c_id: result.data.user.id,
-          phone: result.data.user.phone,
-          city: result.data.user.city,
-          state: result.data.user.state,
-          jobname: result.data.user.jobname,
-          email: result.data.user.email
+          busName: result.data.user.business_name,
+          busLogo: result.data.user.logo,
+          busLink: result.data.user.redirect,
+          busId: result.data.user.bus_id,
+          custId: result.data.user.id,
+          custName: result.data.user.name,
+          custEmail: result.data.user.email,
+          custPhone: result.data.user.phone,
+          custAuth: result.data.user.auth,
+          jobCity: result.data.user.city,
+          jobState: result.data.user.state,
+          jobName: result.data.user.jobname,
         })
         this.setState({
           password: ""

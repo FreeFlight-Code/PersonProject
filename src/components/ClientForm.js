@@ -7,16 +7,17 @@ export default class Client_Form extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      businessName: this.props.auth.businessName,
-      business_id: this.props.auth.business_id,
-      cust_id: 46,
-      c_name: this.props.auth.c_name,
-      email: this.props.auth.email,
-      date: this.props.auth.date,
-      state: this.props.auth.state,
-      city: this.props.auth.city,
-      comments: this.props.auth.comments,
-      auth: this.props.auth.auth,
+      jobName: '',
+      busName: this.props.auth.busName,
+      busId: this.props.auth.busId,
+      custId: this.props.auth.custId,
+      custName: this.props.auth.custName,
+      custEmail: this.props.auth.custEmail,
+      custAuth: this.props.auth.custAuth,
+      date: "",
+      state: "",
+      city: "",
+      comments: "",
       list: [],
       details: []
       // login_profile: profile
@@ -30,11 +31,11 @@ export default class Client_Form extends Component {
   handleSearch(event) {
     console.log(this.state)
     // event.preventDefault()
-    let id = this.state.cust_id;
+    let id = this.state.custId;
     // console.log(this.props, 'props on client')
     axios.get('http://localhost:3030/api/jobSingleCustomer/' + id).then((res) => {
       // console.log('handlesearch in  clientform'+res.data)
-      let name = (this.state.c_name)
+      let name = (this.state.jobName)
       let state = (this.state.state)
       let city = (this.state.city)
       // let comments = (this.state.comments)
@@ -44,7 +45,8 @@ export default class Client_Form extends Component {
       //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~    sort names
       if (name) {
         sortedData = sortedData.filter((e) => {
-          let nameLower = e.name ? (e.name).toLowerCase() : "";
+          if (!name || !e.jobname) return false;
+          let nameLower = name ? (name).toLowerCase() : "";
           let index = e.jobname ? (e.jobname).toLowerCase() : "";
           console.log(index)
           return index.includes(nameLower);
@@ -53,7 +55,8 @@ export default class Client_Form extends Component {
       //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~    sort state
       if (state) {
         sortedData = sortedData.filter((e) => {
-          let stateLower = e.state ? (e.state).toLowerCase() : "";
+          if ( !state || !e.state ) return false;
+          let stateLower =state ? (state).toLowerCase() : "";
           let index = e.state ? (e.state).toLowerCase() : "";
           // console.log(index)
           return index.includes(stateLower);
@@ -63,7 +66,8 @@ export default class Client_Form extends Component {
 
       if (city) {
         sortedData = sortedData.filter((e) => {
-          let cityLower = e.city ? (e.city).toLowerCase() : "";
+          if ( !city || !e.city ) return false;
+          let cityLower = city ? (city).toLowerCase() : "";
           let index = e.city ? (e.city).toLowerCase() : "";
           // console.log(index)
           return index.includes(cityLower);
@@ -111,7 +115,7 @@ export default class Client_Form extends Component {
         <form className='client_Form_container'>
 
 
-          <input className='input_client' onChange={(e) => this.setState({ 'name': e.target.value })} type="text" placeholder='Job name' value={this.state.name}></input>
+          <input className='input_client' onChange={(e) => this.setState({ 'jobName': e.target.value })} type="text" placeholder='Job name' value={this.state.jobName}></input>
 
           <input className='input_client' onChange={(e) => this.setState({ 'state': e.target.value })}
             type="text" placeholder='State' value={this.state.state}></input>
