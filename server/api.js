@@ -52,17 +52,28 @@ module.exports = {
   //     res.status(400).send(error);        
   // })
   // },
-  // destroyBusiness: function (req, res) {
-  //   let db= req.app.get('db')
-  //   const value = req.params.id;
-  //   db.destroyBusiness([value]).then((results) => {
-  //     console.log(results);
-  //     res.status(200).send(results);
-  //   }).catch((error)=>{
-  //       console.log(error);
-  //       res.status(400).send(error);        
-  //   })
-  // },
+  addBusiness: function (req, res) {
+    let db= req.app.get('db')
+    const value = req.params.id;
+    db.addBusiness([value]).then((results) => {
+      console.log(results);
+      res.status(200).send(results);
+    }).catch((error)=>{
+        console.log(error);
+        res.status(400).send(error);        
+    })
+  },
+  addJob: function (req, res) {
+    let db= req.app.get('db')
+    console.log(req.body);
+    db.addJob([value]).then((results) => {
+      console.log(results);
+      res.status(200).send(results);
+    }).catch((error)=>{
+        console.log(error);
+        res.status(400).send(error);        
+    })
+  },
 
   getJobs: function (req, res) {
     let db = req.app.get('db')
@@ -126,7 +137,7 @@ module.exports = {
       db.loginb(email).then((results) => {
         req.session.profile = results[0];
         // console.log(req.session.profile, '...req.session backend')
-        // console.log(results, '...in backend')
+        console.log(results, '...in backend')
       res.status(200).send({user: results[0], redirect: '/login/scheduler'});
       })
     }

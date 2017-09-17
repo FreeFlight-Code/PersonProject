@@ -22,10 +22,10 @@ class Scheduler extends Component {
 
   componentWillMount(){
     axios.get('http://localhost:3030/sessionAuth').then((res) => {
-      console.log(res, 'req.session on scheduler')
+      // console.log(res, 'req.session on scheduler')
     })
-    console.log (this.state, 'state on scheduler')
-    console.log(this.props.auth, 'props.auth')
+    // console.log (this.state, 'state on scheduler')
+    // console.log(this.props.auth, 'props.auth')
 
   }
 
@@ -39,8 +39,8 @@ class Scheduler extends Component {
           </a>
         </div>
       { this.state.auth === 'business' ?
-          < BusinessForm /> :
-          < ClientForm /> } 
+          < BusinessForm {...this.props} /> :
+          < ClientForm {...this.props} /> } 
            {/* < ClientForm /> */}
 
 

@@ -10,16 +10,13 @@
     }
 }
 .loginLogo{
-    width: 85%;    
-    height: auto;
+    height: 30vh;
+    width: auto;
+    // max-height: 30vh;
+    // min-width: auto;    
+    max-width: 80vw;
     margin: 5% auto 1% auto;
-    @media (min-width: 760px) { 
-        width: 50%;
-    }
-    @media (min-width: 1000px) { 
-        width: 30%;
-        margin: 20px 40px;
-      }
+  
 }
 
 
@@ -79,12 +76,14 @@
    animation-name: zoom_out;
    animation-duration: 1000ms;
 }
+
 .input_login, .custom_login_button {
-@media (max-width: 613px) { 
-    display: block;
-    width: 100%;
-    margin: 10px 40px;
-  }
+    @media (max-width: 613px) { 
+        display: block;
+        width: 90vw;
+        margin: 10px 5vw;
+        }
+    
 
 
 }

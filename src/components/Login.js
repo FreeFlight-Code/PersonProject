@@ -52,7 +52,12 @@ class Login extends Component {
           logo: result.data.user.logo,
           auth: result.data.user.auth,
           c_name: result.data.user.name,
-          phone: result.data.user.phone
+          c_id: result.data.user.id,
+          phone: result.data.user.phone,
+          city: result.data.user.city,
+          state: result.data.user.state,
+          jobname: result.data.user.jobname,
+          email: result.data.user.email
         })
         this.setState({
           password: ""

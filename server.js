@@ -29,6 +29,7 @@ ENDPOINTS  SAMPLES
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
+app.get('/api/addBusiness', api.addBusiness);
 app.get('/api/businesses', api.getBusinesses);
 app.get('/api/business/:id', api.getSingleBusiness);
 

@@ -7,61 +7,66 @@ export default class Client_Form extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cust_id: "",
-      name: "",
-      date: "",
-      state: "",
-      city: "",
-      comments: '',
+      businessName: this.props.auth.businessName,
+      business_id: this.props.auth.business_id,
+      cust_id: 46,
+      c_name: this.props.auth.c_name,
+      email: this.props.auth.email,
+      date: this.props.auth.date,
+      state: this.props.auth.state,
+      city: this.props.auth.city,
+      comments: this.props.auth.comments,
+      auth: this.props.auth.auth,
       list: [],
       details: []
       // login_profile: profile
     };
     this.handleSearch = this.handleSearch.bind(this);
-    this.handleDetails = this.handleDetails.bind(this);
-
+    this.handleAddJob = this.handleAddJob.bind(this);
+    this.myDate = this.myDate.bind(this);
 
   }
 
-componentWillMount() {
-  // console.log(this.props.auth, 'props auth')
-}
   handleSearch(event) {
-    event.preventDefault()
+    console.log(this.state)
+    // event.preventDefault()
     let id = this.state.cust_id;
-    console.log(this.props, 'props on client')
+    // console.log(this.props, 'props on client')
     axios.get('http://localhost:3030/api/jobSingleCustomer/' + id).then((res) => {
       // console.log('handlesearch in  clientform'+res.data)
-      let name = (this.state.name).toLowerCase();
-      let state = (this.state.state).toLowerCase();
-      let city = (this.state.city).toLowerCase();
-      // let comments = (this.state.comments).toLowerCase();
+      let name = (this.state.c_name)
+      let state = (this.state.state)
+      let city = (this.state.city)
+      // let comments = (this.state.comments)
       let sortedData = res.data;
 
       console.log(sortedData)
       //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~    sort names
-      if (this.state.name) {
+      if (name) {
         sortedData = sortedData.filter((e) => {
-          let index = (e.jobname).toLowerCase();
+          let nameLower = e.name ? (e.name).toLowerCase() : "";
+          let index = e.jobname ? (e.jobname).toLowerCase() : "";
           console.log(index)
-          return index.includes(name);
+          return index.includes(nameLower);
         })
       }
       //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~    sort state
-      if (this.state.state) {
+      if (state) {
         sortedData = sortedData.filter((e) => {
-          let index = (e.state).toLowerCase();
+          let stateLower = e.state ? (e.state).toLowerCase() : "";
+          let index = e.state ? (e.state).toLowerCase() : "";
           // console.log(index)
-          return index.includes(state);
+          return index.includes(stateLower);
         })
       }
       //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~    sort city
 
-      if (this.state.city) {
+      if (city) {
         sortedData = sortedData.filter((e) => {
-          let index = (e.city).toLowerCase();
+          let cityLower = e.city ? (e.city).toLowerCase() : "";
+          let index = e.city ? (e.city).toLowerCase() : "";
           // console.log(index)
-          return index.includes(city);
+          return index.includes(cityLower);
         })
       }
 
@@ -74,35 +79,37 @@ componentWillMount() {
     })
   }
 
-  handleDetails(event) {
+
+  
+  handleAddJob(event) {
     event.preventDefault()
-    axios.get(`/api/jobs`).then((res) => {
-      let id = this.state.id;
-      let sortedData = res.data;
-      //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~    id sort
-      if (this.state.id) {
-        sortedData = sortedData.filter((e) => {
-          let index = (e.id);
-          console.log(index)
-          return index.includes(id);
-        })
-      }
-      this.setState({
-        details: sortedData
-      })
-
-
+    axios.post(`/api/addjob`, ({
+      user: this.state
+    })).then((res) => {
+      // this.handleSearch()
+      console.log(res, 'inside addjob')
     })
   }
+  componentWillMount() {
+    // console.log(this.props.auth, 'props auth')
+    // this.handleSearch()
+    // console.log(this.props)
+  }
+
+  myDate (date) {
+    let d= new Date (date)
+    return (d.getMonth()+1) + '/' + d.getDate() + '/' + d.getFullYear()
+    }
+
 
   render() {
 
     return (
       <div className="Client_Form">
-        
 
-        <form className='Client_Form_container'>
-          Add:
+
+        <form className='client_Form_container'>
+
 
           <input className='input_client' onChange={(e) => this.setState({ 'name': e.target.value })} type="text" placeholder='Job name' value={this.state.name}></input>
 
@@ -113,26 +120,28 @@ componentWillMount() {
 
           <button onClick={this.handleSearch} className="searchButton">Get Jobs</button>
 
-          <button onClick={this.handleDetails} className="searchButton">Get Details</button>
+          <button onClick={this.handleAddJob} className="searchButton">Add Job</button>
 
-          <input className='input_client' onChange={(e) => this.setState({ 'id': e.target.value })} type="text" placeholder='Job ID' value={this.state.id}></input>
+          {/* <input className='input_client' onChange={(e) => this.setState({ 'id': e.target.value })} type="text" placeholder='Job ID' value={this.state.id}></input> */}
 
         </form>
-        <div id='client results' className="results">{this.state.name}
+        <div id='clientresults' className="results">Results
           <div className="titleHolder">
-              <div className="title">ID</div>
-              <div className="title">Job Name</div>
-              <div className="title">Job Date</div>
-              <div className="title">Job City</div>
-              <div className="title">Job State</div>
+            <div className="client_title">ID</div>
+            <div className="client_title">Job Name</div>
+            <div className="client_title">Job Date</div>
+            <div className="client_title">Job City</div>
+            <div className="client_title">Job State</div>
           </div>
           <div className='list_container'>
             {this.state.list.map((element, i) => {
+
+              let mdate = this.myDate(element.jobdate);
               return (
                 <div className='element_list' key={element.id}>
                   <div>{element.id}</div>
                   <div>{element.jobname}</div>
-                  <div>{(element.jobdate)}</div>
+                  <div>{mdate}</div>
                   <div>{element.city}</div>
                   <div>{element.state}</div>
                 </div>

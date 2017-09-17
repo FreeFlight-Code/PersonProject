@@ -34,11 +34,11 @@ a:hover {
       }
 .deflogo_home {
     width: 32%;
-    opacity: .6;
+    opacity: .4;
     position: absolute;
     top: 7%;
     left: 5%;
-    // animation: zoomin 7s; }
+    animation: zoomin 6s; }
     @keyframes zoomin {
         0% {
           opacity: 0.1;
@@ -49,11 +49,11 @@ a:hover {
           height: 2000%;
           width: 1000%;}        
         100% {
-          opacity: .6;
-          width: 25%;
+          opacity: .4;
+          width: 32%;
           height: auto; }
 }
-}
+
 .deflogo_home:hover{
     opacity: .8;
 }
@@ -75,17 +75,11 @@ a:hover {
     position: relative;
     top: 0;
     right: 0; 
-     // animation: slide-right 3s;}
+    
 }
   
-@keyframes slide-right {
-    0% {top: 200%;
-    right: 200% }
-    100% {top: 55%;
-    right: 30% } 
-}
-    
-        
+
+
 .home_menu_portfolio, .home_menu_social, .home_menu_contact {
     border: 2px solid #424242;
     border-radius: 29px;
@@ -96,9 +90,16 @@ a:hover {
     top: 60vh;
     right: 30%;
     padding-left: 70%;
+    animation: slide-right 3s;
     /* display: inline-block; */
     // padding-left: 90%;   
     
+    @keyframes slide-right {
+        0% {top: 200vh;
+        right: 200% }   
+        100% {top: 60vh;
+        right: 30% } 
+    }
     @media (min-width: 580px) { 
         padding-left: 80%;
         margin: 0 0 .7% 0;
