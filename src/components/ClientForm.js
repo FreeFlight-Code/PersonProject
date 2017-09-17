@@ -38,6 +38,7 @@ export default class Client_Form extends Component {
       let name = (this.state.jobName)
       let state = (this.state.state)
       let city = (this.state.city)
+      let comments = (this.state.comments)
       // let comments = (this.state.comments)
       let sortedData = res.data;
 
@@ -73,6 +74,18 @@ export default class Client_Form extends Component {
           return index.includes(cityLower);
         })
       }
+
+      if (comments) {
+        sortedData = sortedData.filter((e) => {
+          if ( !comments || !e.textfield ) return false;
+          let cityLower = comments ? (comments).toLowerCase() : "";
+          let index = e.textfield ? (e.textfield).toLowerCase() : "";
+          // console.log(index)
+          return index.includes(cityLower);
+        })
+      }
+
+
 
 
       this.setState({
@@ -121,6 +134,10 @@ export default class Client_Form extends Component {
             type="text" placeholder='State' value={this.state.state}></input>
 
           <input className='input_client' onChange={(e) => this.setState({ 'city': e.target.value })} type="text" placeholder='City' value={this.state.city}></input>
+
+          <input className='input_client' onChange={(e) => this.setState({ 'date': e.target.value })} type="text" placeholder='Date' value={this.state.date}></input>
+
+          <input className='input_client' onChange={(e) => this.setState({ 'comments': e.target.value })} type="text" placeholder='Comments' value={this.state.comments}></input>
 
           <button onClick={this.handleSearch} className="searchButton">Get Jobs</button>
 
