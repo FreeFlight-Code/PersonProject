@@ -66,10 +66,27 @@ module.exports = {
   addJob: function (req, res) {
     let db= req.app.get('db')
     console.log(req.body, 'body');
-    let {cust_id, date, city, state, comments, name, business_id} = req.body;
-    db.addJob([business_id, cust_id, name, date, city, state, comments]).then((results) => {
-      console.log(results, 'results');
-      res.status(200).send(results);
+    let {
+      custId,
+      date,
+      city,
+      state,
+      comments,
+      jobName,
+      busId,
+      } = req.body;
+      
+      db.addJob([
+      custId,
+      date,
+      city,
+      state,
+      comments,
+      jobName,
+      busId,
+       ]).then((results) => {
+      console.log('Job added');
+      res.status(200).send('Job added...');
     }).catch((error)=>{
         console.log(error);
         res.status(400).send(error);        

@@ -100,7 +100,7 @@ export default class Client_Form extends Component {
   
   handleAddJob(event) {
     event.preventDefault()
-    axios.post(`/api/addjob`, ({
+    axios.post('http://localhost:3030/api/addjob', ({
       user: this.state
     })).then((res) => {
       // this.handleSearch()
@@ -135,7 +135,7 @@ export default class Client_Form extends Component {
 
           <input className='input_client' onChange={(e) => this.setState({ 'city': e.target.value })} type="text" placeholder='City' value={this.state.city}></input>
 
-          <input className='input_client' onChange={(e) => this.setState({ 'date': e.target.value })} type="text" placeholder='Date' value={this.state.date}></input>
+          {/* <input className='input_client' onChange={(e) => this.setState({ 'date': e.target.value })} type="text" placeholder='Date' value={this.state.date}></input> */}
 
           <input className='input_client' onChange={(e) => this.setState({ 'comments': e.target.value })} type="text" placeholder='Comments' value={this.state.comments}></input>
 
@@ -143,14 +143,13 @@ export default class Client_Form extends Component {
 
           <button onClick={this.handleAddJob} className="searchButton">Add Job</button>
 
-          {/* <input className='input_client' onChange={(e) => this.setState({ 'id': e.target.value })} type="text" placeholder='Job ID' value={this.state.id}></input> */}
 
         </form>
         <div id='clientresults' className="results">Results
           <div className="titleHolder">
             <div className="client_title">ID</div>
             <div className="client_title">Job Name</div>
-            <div className="client_title">Job Date</div>
+            {/* <div className="client_title">Job Date</div> */}
             <div className="client_title">Job City</div>
             <div className="client_title">Job State</div>
           </div>
@@ -162,7 +161,7 @@ export default class Client_Form extends Component {
                 <div className='element_list' key={element.id}>
                   <div>{element.id}</div>
                   <div>{element.jobname}</div>
-                  <div>{mdate}</div>
+                  {/* <div>{mdate}</div> */}
                   <div>{element.city}</div>
                   <div>{element.state}</div>
                 </div>
