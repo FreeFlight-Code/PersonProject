@@ -6,7 +6,7 @@ class Login extends Component {
 
   componentWillMount() {
     let params = this.props.location.pathname.split('/').pop();
-    if (params === 'Login' || params === 'login') {params = 1}
+    if (params === 'Login' || params === 'login') { params = 1 }
     // console.log(params)
     axios.get('http://localhost:3030/api/business/' + params)
       .then((res) => {
@@ -40,31 +40,31 @@ class Login extends Component {
   handlelogin() {
     if (!this.state.email || !this.state.password) alert('Must enter a email and password!!!')
     if (this.state.email && this.state.password) {
-      axios.post(`http://localhost:3030/client_auth`, {
+      axios.post(`http://localhost:3030/login`, {
         email: this.state.email,
         password: this.state.password,
         business_id: this.state.business_id
       }).then((result) => {
-        // console.log(result.data.user, 'data coming from backend to handlelogin');
-        this.setState({ 
-          busName: result.data.user.business_name,
-          busLogo: result.data.user.logo,
-          busLink: result.data.user.redirect,
-          busId: result.data.user.bus_id,
-          custId: result.data.user.id,
-          custName: result.data.user.name,
-          custEmail: result.data.user.email,
-          custPhone: result.data.user.phone,
-          custAuth: result.data.user.auth,
-          jobCity: result.data.user.city,
-          jobState: result.data.user.state,
-          jobName: result.data.user.jobname,
+        console.log(result, 'data coming from backend to handlelogin');
+        let resultSent = result.data.user;
+        this.setState({
+          busName: resultSent.business_name,
+          busLogo: resultSent.logo,
+          busLink: resultSent.redirect,
+          busId: resultSent.bus_id,
+          custId: resultSent.id,
+          custName: resultSent.name,
+          custEmail: resultSent.email,
+          custPhone: resultSent.phone,
+          custAuth: resultSent.auth,
+          password: "",
+          auth: resultSent.auth,
         })
         this.setState({
           password: ""
         })
         this.props.setUserInfo(this.state);
-        // console.log('props in handlelogin' + this.props)
+        console.log(this.state, 'state on login')
         this.props.history.push(result.data.redirect);
       });
     }
@@ -75,33 +75,33 @@ class Login extends Component {
       <div className="Login">
         <div id='headerLogin'>
 
-              <img className='loginLogo' src={this.state.logo} alt='DEF' />
-              <div className='loginBusinessName'>
-                {this.state.businessName}<div id="titlesubtext">Custom Scheduler</div>
-              </div>
-        
-        <div>
-              <a href={'http://localhost:3030/auth'}>
-                <button className='google_login_button'>GOOGLE+</button>
-              </a>
-              <input className='input_login email' placeholder='email' type="text" onChange={(event) => {
-                this.setState({
+          <img className='loginLogo' src={this.state.logo} alt='DEF' />
+          <div className='loginBusinessName'>
+            {this.state.businessName}<div id="titlesubtext">Custom Scheduler</div>
+          </div>
 
-                  email: event.target.value
-                })
-              }}  value={this.state.email} />
-              {/*~~~~~~~~~~~~~~~  buttons separator    ~~~~~~~~~~~~~~~~~~*/}
-              <input className='input_login password' placeholder='password' type="text" onChange={(event) => {
-                this.setState({
-                  password: event.target.value
-                })
-              }} value={this.state.password} />
+          <div>
+            <a href={'http://localhost:3030/auth'}>
+              <button className='google_login_button'>GOOGLE+</button>
+            </a>
+            <input className='input_login email' placeholder='email' type="text" onChange={(event) => {
+              this.setState({
 
-              <button onClick={this.handlelogin} className='custom_login_button'>LOG IN</button>
+                email: event.target.value
+              })
+            }} value={this.state.email} />
+            {/*~~~~~~~~~~~~~~~  buttons separator    ~~~~~~~~~~~~~~~~~~*/}
+            <input className='input_login password' placeholder='password' type="text" onChange={(event) => {
+              this.setState({
+                password: event.target.value
+              })
+            }} value={this.state.password} />
 
-              <a href='http://localhost:3030/auth/logout'>
-                <button className='logout_button'>log out</button>
-              </a>
+            <button onClick={this.handlelogin} className='custom_login_button'>LOG IN</button>
+
+            <a href='http://localhost:3030/auth/logout'>
+              <button className='logout_button'>log out</button>
+            </a>
           </div>
         </div>
       </div>

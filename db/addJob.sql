@@ -9,7 +9,7 @@ insert into jobs (
     jobname,
     business_id
     )
-values($1, '12-24-1977', $3, $4, $5, $6, $7)
+values($1, $2, $3, $4, $5, $6, $7)
 
 
 

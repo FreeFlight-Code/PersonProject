@@ -96,7 +96,11 @@ export default class Form extends Component {
     let d= new Date (date)
     return (d.getMonth()+1) + '/' + d.getDate() + '/' + d.getFullYear()
     }
-
+    
+    componentWillMount() {
+      console.log(this.state)
+    }
+    
 
   render() {
 

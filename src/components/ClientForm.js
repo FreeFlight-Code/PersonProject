@@ -123,7 +123,13 @@ export default class Client_Form extends Component {
 
     return (
       <div className="Client_Form">
-
+        <div>
+          <span>{this.state.busName}</span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
 
         <form className='client_Form_container'>
 
@@ -135,7 +141,7 @@ export default class Client_Form extends Component {
 
           <input className='input_client' onChange={(e) => this.setState({ 'city': e.target.value })} type="text" placeholder='City' value={this.state.city}></input>
 
-          {/* <input className='input_client' onChange={(e) => this.setState({ 'date': e.target.value })} type="text" placeholder='Date' value={this.state.date}></input> */}
+           <input type='date' className='input_client' onChange={(e) => this.setState({ 'date': e.target.value })} default={new Date()} value={this.state.date}></input> 
 
           <input className='input_client' onChange={(e) => this.setState({ 'comments': e.target.value })} type="text" placeholder='Comments' value={this.state.comments}></input>
 
@@ -149,7 +155,7 @@ export default class Client_Form extends Component {
           <div className="titleHolder">
             <div className="client_title">ID</div>
             <div className="client_title">Job Name</div>
-            {/* <div className="client_title">Job Date</div> */}
+            <div className="client_title">Job Date</div>
             <div className="client_title">Job City</div>
             <div className="client_title">Job State</div>
           </div>
@@ -161,7 +167,7 @@ export default class Client_Form extends Component {
                 <div className='element_list' key={element.id}>
                   <div>{element.id}</div>
                   <div>{element.jobname}</div>
-                  {/* <div>{mdate}</div> */}
+                  <div>{mdate}</div>
                   <div>{element.city}</div>
                   <div>{element.state}</div>
                 </div>

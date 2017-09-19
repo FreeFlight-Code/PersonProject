@@ -65,16 +65,9 @@ module.exports = {
   },
   addJob: function (req, res) {
     let db= req.app.get('db')
-    console.log(req.body, 'body');
-    let {
-      custId,
-      date,
-      city,
-      state,
-      comments,
-      jobName,
-      busId,
-      } = req.body;
+    console.log(req.body.user, 'body.user');
+    let {custId, date, city, state, comments, jobName, busId,} = req.body.user;
+      console.log(custId, 'custId')
       
       db.addJob([
       custId,
@@ -125,49 +118,52 @@ module.exports = {
       res.status(400).send(error);
     })
   },
+addUser: function (req, res, next) {
+  // console.log('in adduser');
+
+  let auth = 'client';
+  let db = req.app.get('db');
+  let { email, password, business_id} = req.body;
+  db.login([email, password, business_id, auth]).then(res => {
+  if (res[0]) {
+    next();
+  } 
+  else
+    db.adduser([email, password, business_id, auth]).then((results2) => {
+      res.push(results2[0]);
+  //     console.log('adduser ', res);
+      res.status(200).send(res)
+    })
+    .catch((error) => {
+      console.log(error);
+      res.status(400).send(error);
+    })
+    })
+  },
 
   login: function (req, res, next) {
-    // console.log(res);
+    // console.log('in login');
+    // let id = req.params.id;
 
     let db = req.app.get('db')
     let { email, password, business_id} = req.body;
     db.login(email).then((results) => {
-      if (!results[0]) {
-        let auth = 'client';
-        db.adduser([email, password, business_id, auth]).then((results2) => {
-          results.push(results2[0]);
-          console.log('adduser ', results);
-          res.status(200).send(results)
-        })
-        .catch((error) => {
-          console.log(error);
-          res.status(400).send(error);
-        })
-      }
-    
-
-      else if (results[0].password !== password) {
-        let id = req.params.id;
-        // console.log('login failure');
+      if (results[0].password !== password) {
         res.status(400).send('login failure');
-      }
-    else if (results[0].password === password) {
-      db.loginb(email).then((results) => {
-        req.session.profile = results[0];
-        // console.log(req.session.profile, '...req.session backend')
-        // console.log(results, '...in backend')
-      res.status(200).send({user: results[0], redirect: '/login/scheduler'});
-      })
-    }
-  }).catch((error) => {
-    console.log(error);
-    res.status(400).send(error);
-  })
+      } else 
+      if (results[0].password === password) {
+      next();
+  }})
 },
 
 sessionAuth: function (req, res) {
-  res.status(200).send(req.session);
+  let db = req.app.get('db')
+  let { email, password, business_id} = req.body;  
+  db.loginb(email).then((results) => {
+    res.status(200).send({user: results[0], redirect: '/login/scheduler'})
+ 
+})},
 
-}
+
 
 }

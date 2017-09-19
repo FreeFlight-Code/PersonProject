@@ -88,6 +88,7 @@ passport.use(new Auth0Strategy({
 app.get('/auth', passport.authenticate('auth0'));
 
 app.post('/client_auth', api.login);
+app.post('/login', api.addUser, api.login, api.sessionAuth);
 
 app.get('/sessionAuth', api.sessionAuth);
 
