@@ -4,6 +4,17 @@ module.exports = {
   //~~~~~~~~~~~~~~~~~~~~~~  QUERIES  ~~~~~~~~~~~~~~~~~~~~~
 
 
+  createDatabase: function (req, res) {
+    let db = req.app.get('db')
+    db.createDatabase().then((results) => {
+      console.log(results);
+      res.status(200);
+    }).catch((error) => {
+      console.log(error);
+      res.status(400).send(error);
+    })
+  },
+
   getBusinesses: function (req, res) {
     let db = req.app.get('db')
     db.getBusinesses().then((results) => {
@@ -78,7 +89,7 @@ module.exports = {
       jobName,
       busId,
        ]).then((results) => {
-      console.log('Job added');
+      console.log('Job added', results);
       res.status(200).send('Job added...');
     }).catch((error)=>{
         console.log(error);
@@ -89,6 +100,7 @@ module.exports = {
   getJobs: function (req, res) {
     let db = req.app.get('db')
     db.getJobs().then((results) => {
+      console.log(results)
       res.status(200).send(results);
     }).catch((error) => {
       console.log(error);

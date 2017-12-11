@@ -14,7 +14,7 @@ const massive = require('massive');
 const app = express();
 
 
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~    MIDDLEWARE     ~~~~~~~~~~~~~~~~~~`
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~    MIDDLEWARE     ~~~~~~~~~~~~~~~~~~
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -28,6 +28,7 @@ const api = require('./server/api.js');
 ENDPOINTS  SAMPLES
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+// app.use(api.createDatabase);
 
 app.get('/api/addBusiness', api.addBusiness);
 app.get('/api/businesses', api.getBusinesses);
